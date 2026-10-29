@@ -48,9 +48,9 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 </main><footer>متحف البحر الأحمر · جدة</footer>
 <script>
 const guide={
- industry:{title:"صناعة المرساة",text:"استُخدمت المراسي الخشبية المدعّمة بالحديد في بعض الفترات البحرية. واشتهر خشب الساج بمتانته في الاستخدام البحري. لا يوجد في هذه التجربة توثيق يحسم نوع خشب هذه المرساة أو معدنها."},
- story:{title:"قصة المرساة",text:"تحكي هذه القطعة عن أدوات البحّارة في البحر الأحمر؛ فالمرساة تساعد السفينة على الثبات، وتذكّرنا بالرحلات البحرية التي ربطت جدة بموانئ وشعوب متعددة. تفاصيل رحلة هذه المرساة نفسها تحتاج إلى سجل القطعة بالمتحف."},
- history:{title:"تاريخ المرساة",text:"تطوّرت المراسي عبر قرون من أثقال حجرية وأخشاب ذات مخالب إلى مراسٍ حديدية. وفي بعض التصاميم استُخدم عارض خشبي لتثبيت أجزاء المرساة. أما تاريخ هذه القطعة تحديدًا فيُرجع فيه إلى بطاقة المتحف."}
+ industry:{title:"المادة والصناعة",text:"أكد فحص الأشعة السينية المحمولة أن هذه المرساة حديدية. استُخدم الساج في بعض الصناعات البحرية لمتانته، لكن هذه القطعة ليست مرساة خشبية ولا يثبت الفحص وجود الساج فيها."},
+ story:{title:"قصة المرساة",text:"عُثر على هذه المرساة على ساحل البحر الأحمر قرب جدة. وبعد استعادتها، استخدم فريق الترميم المسح ثلاثي الأبعاد وإعادة البناء الرقمي لإظهار شكلها قبل عرضها في متحف البحر الأحمر."},
+ history:{title:"تاريخ المرساة",text:"تعود هذه المرساة الحديدية المعروضة في متحف البحر الأحمر إلى القرن الثامن عشر. يبلغ طولها نحو 2.7 متر، ويقدّر وزنها بين 350 و400 كيلوغرام، ويرتبط تصميمها بمراسي تلك الحقبة."}
 };
 const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),error=document.querySelector("#camera-error");
 const panel=document.querySelector("#info-panel"),closeButton=document.querySelector("#close-panel"),listenButton=document.querySelector("#listen-panel");
@@ -63,7 +63,7 @@ function drawCard(topic){
  ctx.direction="rtl";ctx.textAlign="right";ctx.fillStyle="#684a35";ctx.font="bold 62px Arial";ctx.fillText(item.title,1110,125);
  ctx.strokeStyle="#cfb183";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(80,165);ctx.lineTo(1120,165);ctx.stroke();
  ctx.fillStyle="#38291f";ctx.font="48px Arial";const lines=wrapRTL(ctx,item.text,1030);lines.slice(0,5).forEach((line,i)=>ctx.fillText(line,1110,245+i*72));
- ctx.fillStyle="#927448";ctx.font="bold 30px Arial";ctx.fillText("اضغط ▶ للاستماع إلى البطاقة",1110,590);
+ ctx.fillStyle="#927448";ctx.font="bold 30px Arial";ctx.fillText("اضغط ▶ للاستماع إلى البطاقة",1110,580);ctx.font="24px Arial";ctx.fillText("المصدر: وكالة الأنباء السعودية · واس",1110,625);
  if(cardTexture)cardTexture.dispose();cardTexture=new THREE.CanvasTexture(canvas);cardTexture.needsUpdate=true;
  const mesh=panel.getObject3D("mesh");if(mesh){mesh.material.map=cardTexture;mesh.material.needsUpdate=true;}
 }
