@@ -78,6 +78,26 @@ let readyTimer;
 async function startAR(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(started)return;const system=scene.systems["mindar-image-system"];if(!system){hint.textContent="جارٍ تجهيز الكاميرا…";readyTimer=setTimeout(startAR,500);return;}error.hidden=true;hint.textContent="جارٍ تشغيل الكاميرا…";try{await system.start();started=true;hint.textContent="وجّه الكاميرا نحو صورة المرساة";}catch(e){hint.textContent="لم تعمل الكاميرا. اسمح بإذن الكاميرا ثم أعد المحاولة.";error.textContent="تأكد من فتح الموقع عبر HTTPS واستخدام Safari أو Chrome.";error.hidden=false;}}
 document.querySelector("#start").addEventListener("click",startAR);
 document.querySelector(".download").addEventListener("click",()=>startAR());
-scene.addEventListener("loaded",()=>{target.object3D.visible=false;});
+scene.addEventListener("loaded",()=>{target.object3D.visible=false;
+ // Make AR controls tappable on iPhone touchscreens as well as desktop mouse.
+ const canvas=scene.canvas; if(!canvas)return;
+ const pointer=new THREE.Vector2(),raycaster=new THREE.Raycaster();
+ canvas.addEventListener("pointerdown",event=>{
+  const rect=canvas.getBoundingClientRect();
+  pointer.x=((event.clientX-rect.left)/rect.width)*2-1;
+  pointer.y=-((event.clientY-rect.top)/rect.height)*2+1;
+  raycaster.setFromCamera(pointer,scene.camera);
+  const hits=raycaster.intersectObject(target.object3D,true);
+  for(const hit of hits){
+   let node=hit.object;
+   while(node&&node.el){
+    if(["arrow-green","arrow-blue","close-panel","listen-panel"].includes(node.el.id)){
+     node.el.dispatchEvent(new Event("click",{bubbles:true})); return;
+    }
+    node=node.parent;
+   }
+  }
+ });
+});
 </script>
 </body></html>
