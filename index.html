@@ -37,6 +37,8 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 <a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded background="transparent:true" color-space="sRGB" renderer="alpha:true; antialias:true; colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false">
 <a-camera position="0 0 0" look-controls="enabled:false" cursor="rayOrigin:mouse; fuse:false" raycaster="objects:.tap-target"></a-camera>
 <a-entity id="target" mindar-image-target="targetIndex:0" visible="false">
+<!-- User-provided GLB anchor model, shown over the recognized image target. -->
+<a-entity id="anchor-model" gltf-model="url(assets/anchor.glb)" position="0 -.30 .06" scale=".20 .20 .20"></a-entity>
 <!-- Interactive arrows sit directly over the tracked anchor image. -->
 <a-entity id="arrow-green" class="tap-target" position=".20 -.14 .04"><a-text value="↗" position="0 0 .01" align="center" anchor="center" color="#f7ecda" width=".9"></a-text></a-entity>
 <a-entity id="arrow-blue" class="tap-target" position=".29 -.43 .04"><a-text value="↘" position="0 0 .01" align="center" anchor="center" color="#f7ecda" width=".9"></a-text></a-entity>
