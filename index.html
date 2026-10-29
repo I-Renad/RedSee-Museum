@@ -3,70 +3,85 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#102f34">
-<title>حكاية المرساة | متحف البحر الأحمر</title>
+<meta name="theme-color" content="#684a35">
+<title>Red Sea Museum AR Guide | دليل متحف البحر الأحمر</title>
 <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 <style>
-:root{--ink:#3b2b20;--sea:#5a4030;--sand:#efe2d0;--paper:#faf5ec;--gold:#ad7d45;--muted:#76695c;--line:#d9c8b0}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"IBM Plex Sans Arabic",sans-serif}
-header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#faf5ec}
-.brand{display:flex;align-items:center;gap:11px}.mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sea);color:#f1d39b;font-size:21px}.brand-title{font-size:14px;font-weight:700}.brand small{display:block;font-size:9px;letter-spacing:.14em;color:var(--muted);margin-top:3px}
-.header-tag{font-size:11px;color:#927346;letter-spacing:.14em}
-.hero{padding:50px clamp(20px,8vw,120px);display:grid;grid-template-columns:1fr .95fr;gap:7vw;align-items:center;background:linear-gradient(120deg,#f7f4eb,#e9e3d6);min-height:470px}
-.kicker{color:#927346;font-size:10px;letter-spacing:.19em}.hero h1{font-size:clamp(38px,5vw,66px);line-height:1.25;margin:15px 0;color:var(--sea)}.hero p{max-width:460px;line-height:2;color:#5d706c;font-size:15px}
-.primary{margin-top:16px;background:var(--sea);color:white;padding:14px 22px;border:0;border-radius:4px;font-weight:bold;font-size:14px;cursor:pointer}.primary:hover{background:#72543a}.primary span{color:#e7c17f;margin-inline-start:18px}
-.hero-note{margin-top:13px;font-size:10px;color:#86775f}
-.target-frame{background:#fffdf8;padding:11px;border:1px solid #cfc1a8;box-shadow:0 16px 40px #40331d1c;position:relative}
-.target-frame:before{content:"";position:absolute;inset:5px;border:1px solid #d8cbb4;pointer-events:none}
-.target-frame img{display:block;width:100%;max-height:340px;object-fit:cover}
-.target-caption{display:flex;justify-content:space-between;gap:10px;padding:10px 4px 2px;font-size:10px;color:#786c58}.target-caption span:last-child{letter-spacing:.1em}
-.howto{padding:28px clamp(20px,8vw,120px);background:#e6d5c0;border-top:1px solid #d2bea3;border-bottom:1px solid #d2bea3}.howto h2{margin:0 0 14px;color:var(--sea);font-size:20px}.howto-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.howto-step{background:#faf5ec;border:1px solid #d4c2a8;padding:15px;line-height:1.8;font-size:13px}.howto-step b{display:block;color:#927346;margin-bottom:4px}.scanner-section{padding:46px clamp(20px,8vw,120px) 60px}
-.scanner-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.scanner-heading h2{font-size:22px;margin:5px 0;color:var(--sea)}.scanner-heading p{font-size:12px;color:var(--muted);margin:0}
-.scanner{height:min(52vh,480px);min-height:300px;background:#392a21;position:relative;overflow:hidden}
-a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}
-#hint{position:absolute;z-index:3;inset:0;display:grid;align-content:center;justify-items:center;gap:8px;background:#061f26b7;color:#f1d39b;text-align:center;padding:20px;pointer-events:none}
-#hint .target-icon{font-size:42px}#hint b{font-size:15px}#hint small{color:#d1d7c9}
-.info-section{padding:46px clamp(20px,8vw,120px) 54px;background:#eee1d0}
-.info-section h2{color:var(--sea);font-size:23px;margin:5px 0}.info-section>p{font-size:13px;color:#63716a;margin:0 0 18px}
-.info-buttons{display:flex;gap:9px;flex-wrap:wrap}.info-buttons button{padding:11px 16px;border:1px solid #cbbd9f;background:#faf8f2;color:#4e3829;border-radius:4px;cursor:pointer}.info-buttons button[aria-pressed=true],.info-buttons button:hover{background:var(--sea);color:white;border-color:var(--sea)}
-.info-card{margin-top:14px;min-height:120px;background:#fbfaf6;border:1px solid #ddd2c0;border-right:4px solid var(--gold);padding:17px 20px;line-height:1.9}.info-card h3{margin:0 0 5px;color:#997340;font-size:17px}.info-card p{margin:0;font-size:13px;color:#405a56}.sources{padding-top:9px;margin-top:10px;border-top:1px solid #e7dfd2;font-size:10px;color:#6f7770}.sources a{color:#826137;margin-inline-start:8px}
-.ask{margin-top:20px;display:flex;gap:8px;max-width:600px}.ask input{flex:1;min-width:0;padding:11px;border:1px solid #d1c6b5;background:#fffdf9;border-radius:4px}.ask button{padding:0 18px;border:0;background:var(--sea);color:white;border-radius:4px;cursor:pointer}.answer{font-size:12px;color:#63716a;min-height:22px}
-footer{padding:17px 24px;background:var(--sea);color:#e5e0d3;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em}
-@media(max-width:760px){.howto-steps{grid-template-columns:1fr}header{height:66px;padding:0 18px}.hero{grid-template-columns:1fr;padding:35px 20px;gap:24px}.hero h1{font-size:42px}.target-frame{max-width:560px}.target-frame img{max-height:255px}.scanner-section{padding:35px 18px 42px}.scanner{height:48vh;min-height:280px}.scanner-heading{display:block}.scanner-heading p{margin-top:4px}.info-section{padding:34px 18px 40px}.info-buttons button{flex:1 1 40%}footer{display:block;text-align:center;line-height:2}}
-.secondary{display:inline-block;margin:8px 8px 0 0;padding:12px 16px;border:1px solid #b59b79;border-radius:4px;color:#5a4030;text-decoration:none;font-size:13px;background:#f8f0e5}.secondary:hover{background:#e6d4bd}.scanner-status{font-size:12px;color:#776047}
+:root{--ink:#33251d;--brown:#684a35;--brown2:#876344;--sand:#e9d8bf;--paper:#fbf6ee;--line:#d9c5a8;--gold:#c89a56}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"IBM Plex Sans Arabic",sans-serif}
+header{height:72px;padding:0 clamp(18px,6vw,84px);display:flex;justify-content:space-between;align-items:center;background:var(--paper);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:bold}.mark{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--brown);color:#f4dfbc;font-size:21px}.brand small{display:block;font-size:9px;letter-spacing:.12em;color:#8c7256;margin-top:3px}.tag{font-size:11px;color:var(--brown2);letter-spacing:.12em}
+.hero{display:grid;grid-template-columns:1fr .9fr;gap:7vw;align-items:center;padding:48px clamp(20px,8vw,110px);background:linear-gradient(120deg,#faf5ec,#eadcc8)}
+.kicker{font-size:10px;letter-spacing:.16em;color:#98774e}.hero h1{font-size:clamp(36px,5vw,62px);line-height:1.2;color:var(--brown);margin:14px 0}.hero p{line-height:1.9;max-width:490px;color:#665547;font-size:15px}
+.primary,.secondary{display:inline-block;margin:10px 7px 0 0;padding:13px 18px;border-radius:4px;font-weight:bold;font-size:14px;cursor:pointer;text-decoration:none}.primary{border:0;background:var(--brown);color:white}.primary:hover{background:#806044}.secondary{border:1px solid #b79b76;color:var(--brown);background:#fbf6ee}
+.hero-note{margin-top:10px;font-size:11px;color:#88745d}
+.target-frame{margin:0;background:#fffdf8;padding:10px;border:1px solid #d2c0a3;box-shadow:0 14px 35px #50391d1c}.target-frame img{display:block;width:100%;max-height:330px;object-fit:cover}.target-frame figcaption{padding:10px 4px 1px;font-size:10px;color:#78674f}
+.howto{padding:26px clamp(20px,8vw,110px);background:#e9d8bf;border-block:1px solid var(--line)}.howto h2{font-size:19px;color:var(--brown);margin:0 0 12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.step{padding:13px;background:#fbf6ee;border:1px solid var(--line);font-size:13px;line-height:1.8}.step b{display:block;color:#927148;margin-bottom:3px}
+.scanner-section{padding:42px clamp(18px,7vw,96px) 52px}.scanner-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:14px}.scanner-heading h2{font-size:23px;color:var(--brown);margin:5px 0}.scanner-heading p{font-size:12px;color:#766653;margin:0}
+.scanner{height:min(62vh,590px);min-height:360px;position:relative;overflow:hidden;background:#171f1c;border:1px solid #bba887}a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}
+#hint{position:absolute;z-index:4;inset:0;display:grid;align-content:center;justify-items:center;gap:11px;padding:20px;text-align:center;color:#f4dfbc;background:#171f1cdb;pointer-events:none}#hint[hidden]{display:none!important}#hint .icon{font-size:38px}#hint b{font-size:16px}#hint small{font-size:13px;color:#eee0cd;line-height:1.8}
+#camera-error{position:absolute;z-index:5;inset:auto 12px 12px;padding:10px;background:#fff1e9;color:#693d2b;border-radius:4px;font-size:12px;text-align:center}#camera-error[hidden]{display:none}
+#ar-controls{display:none;gap:9px;flex-wrap:wrap;margin-top:12px}#ar-controls.visible{display:flex}.ar-control{border:1px solid #b79b76;background:#fffaf2;color:var(--brown);padding:11px 14px;border-radius:4px;font-weight:bold}
+.details{padding:38px clamp(20px,8vw,110px) 46px;background:#eee0cc}.details h2{margin:5px 0;color:var(--brown);font-size:23px}.details>p{font-size:13px;color:#6d6255}
+.detail-tabs{display:flex;gap:9px;flex-wrap:wrap}.detail-tabs button{border:1px solid #cbb999;background:#fbf6ee;color:var(--brown);padding:10px 15px;border-radius:4px;cursor:pointer}.detail-tabs button[aria-pressed=true],.detail-tabs button:hover{background:var(--brown);color:white}.detail-card{margin-top:12px;padding:17px 19px;background:#fffdf9;border:1px solid #ddd0bc;border-right:4px solid var(--gold);line-height:1.9}.detail-card h3{margin:0 0 5px;color:#927148}.detail-card p{margin:0;font-size:14px;color:#51483f}.source{margin-top:10px;padding-top:8px;border-top:1px solid #e9dfd0;font-size:11px}.source a{color:#805a31;margin-inline-start:7px}
+footer{padding:15px 20px;text-align:center;background:var(--brown);color:#efe3cf;font-size:10px;letter-spacing:.08em}
+@media(max-width:720px){header{height:64px;padding:0 16px}.hero{grid-template-columns:1fr;padding:32px 18px;gap:22px}.hero h1{font-size:40px}.target-frame img{max-height:250px}.steps{grid-template-columns:1fr}.scanner-section{padding:32px 16px 38px}.scanner-heading{display:block}.scanner-heading p{margin-top:5px}.scanner{height:58vh;min-height:340px}.details{padding:32px 18px 38px}.detail-tabs button{flex:1 1 40%}}
 </style>
 </head>
 <body>
-<header><div class="brand"><span class="mark">⚓</span><div class="brand-title">متحف البحر الأحمر<small>RED SEA MUSEUM · جدة</small></div></div><span class="header-tag">حكاية من الساحل</span></header>
+<header><div class="brand"><span class="mark">⚓</span><div>متحف البحر الأحمر<small>RED SEA MUSEUM · JEDDAH</small></div></div><span class="tag">دليل تفاعلي بالواقع المعزز</span></header>
 <main>
 <section class="hero">
-<div><span class="kicker">تجربة تفاعلية · واقع معزز</span><h1>حكاية المرساة</h1><p>وجّهي كاميرا جوالك إلى صورة المرساة، وشاهدي بطاقة تعريفية تظهر فوقها. بعدها افتحي موضوعًا من الأزرار لمعرفة المزيد عن المرساة والخشب البحري.</p><a id="save-target" class="secondary" href="assets/anchor-target.jpg" download="red-sea-anchor-target.jpg">⬇️ حفظ صورة الهدف</a><button id="start" class="primary">📷 بدء الواقع المعزز <span>↗</span></button><div class="hero-note">اسمحي للمتصفح باستخدام الكاميرا عند الطلب.</div></div>
-<figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة الأثرية المستخدمة كهدف للتعرف البصري"><figcaption class="target-caption"><span>صورة الهدف · اعرضيها على شاشة ثانية أو اطبعيها</span><span>OBJECT 01</span></figcaption></figure>
+<div><span class="kicker">IMAGE TRACKING · MINDAR</span><h1>حكاية المرساة</h1><p>وجّه كاميرا الجوال نحو صورة المرساة لتظهر بطاقات متحركة حولها، واستكشف حكاية ميناء جدة ومواد صناعة المراكب.</p><a class="secondary" href="assets/anchor-target.jpg" download="red-sea-anchor-target.jpg">⬇ حفظ صورة الهدف</a><button id="start" class="primary">📷 بدء التجربة</button><div class="hero-note">اسمح للمتصفح باستخدام الكاميرا. التجربة تعمل عبر HTTPS.</div></div>
+<figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة المستخدمة كهدف للتعرف"><figcaption>صورة الهدف · اعرضها على جهاز آخر أو اطبعها</figcaption></figure>
 </section>
-<section class="howto" aria-labelledby="howto-title"><h2 id="howto-title">طريقة التجربة</h2><div class="howto-steps"><div class="howto-step"><b>١ · جهّز صورة الهدف</b>اعرض صورة المرساة على جهاز آخر أو اطبعها.</div><div class="howto-step"><b>٢ · افتح الموقع على الجوال</b>استخدم الجوال الذي ستجرّب به الواقع المعزز.</div><div class="howto-step"><b>٣ · وجّه الكاميرا</b>اضغط «بدء الواقع المعزز» ووجّه الكاميرا نحو صورة المرساة.</div></div></section>
-<section class="scanner-section" id="scanner"><div class="scanner-heading"><div><span class="kicker">IMAGE TRACKING · MINDAR</span><h2>وجّه الكاميرا نحو صورة الهدف</h2></div><p>تأكدي من وضوح الصورة والإضاءة حولها.</p></div><div class="scanner"><div id="hint"><span class="target-icon">⌖</span><b>الكاميرا بانتظار صورة المرساة</b><small>اضغط «بدء الواقع المعزز» ثم وجّهيها للصورة أعلاه</small></div>
-<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded color-space="sRGB" renderer="colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false"><a-camera position="0 0 0" look-controls="enabled:false"></a-camera><a-entity id="target" mindar-image-target="targetIndex:0"><a-plane position="0 0 0" width="1.15" height=".68" material="shader:flat;color:#f3e5cd;opacity:1;transparent:false"></a-plane><a-circle position="-.36 .12 .02" radius=".12" color="#9a6b37"></a-circle><a-text value="ANCHOR 01" position="-.18 .12 .03" color="#3b2b20" width="1.2"></a-text><a-text value="RED SEA MUSEUM" position="-.18 -.03 .03" color="#805a31" width="1.1"></a-text><a-text value="Open an information card below" position="-.18 -.18 .03" color="#3b2b20" width="1.15"></a-text></a-entity></a-scene></div></section>
-<section class="info-section" id="info-section" hidden><span class="kicker">دليل القطعة</span><h2>اختاري موضوعًا</h2><p>معلومات عامة موثقة عن الخشب البحري، وليست فحصًا لهذه المرساة بعينها.</p>
-<div class="info-buttons"><button data-topic="wood" aria-pressed="true">خشب الساج</button><button data-topic="salt" aria-pressed="false">ماء البحر والملوحة</button><button data-topic="anchor" aria-pressed="false">كيف تعمل المرساة؟</button></div><article id="card" class="info-card" aria-live="polite"></article>
-<div class="ask"><input id="question" placeholder="اكتبي سؤالًا عن المرساة" maxlength="200"><button id="ask">اسألي المرشد</button></div><p id="answer" class="answer" aria-live="polite">إجابات هذا النموذج جاهزة ومبنية على البطاقات أعلاه.</p></section></main>
-<footer><span>AR × COMPUTER VISION</span></footer>
+<section class="howto"><h2>طريقة التجربة</h2><div class="steps"><div class="step"><b>١ · جهّز صورة الهدف</b>اعرض صورة المرساة على جهاز آخر أو اطبعها.</div><div class="step"><b>٢ · افتح الموقع على الجوال</b>استخدم الجوال الذي ستجرب به الواقع المعزز.</div><div class="step"><b>٣ · وجّه الكاميرا</b>اضغط «بدء التجربة» ووجّه الكاميرا نحو صورة المرساة.</div></div></section>
+<section class="scanner-section" id="scanner"><div class="scanner-heading"><div><span class="kicker">LIVE IMAGE TRACKING</span><h2>وجّه الكاميرا نحو صورة الهدف</h2></div><p>حافظ على إضاءة جيدة وخلّ الصورة كاملة داخل الإطار.</p></div>
+<div class="scanner"><div id="hint"><span class="icon">⌖</span><b>الكاميرا بانتظار صورة المرساة</b><small>اضغط «بدء التجربة» ووجّه الكاميرا إلى الصورة المطبوعة أو المعروضة على شاشة أخرى.</small></div><div id="camera-error" hidden></div>
+<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded color-space="sRGB" renderer="colorManagement:true; physicallyCorrectLights:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false">
+<a-camera position="0 0 0" look-controls="enabled:false" cursor="rayOrigin:mouse; fuse:false" raycaster="objects:.ar-button"></a-camera>
+<a-entity id="target" mindar-image-target="targetIndex:0">
+<a-entity id="history-card" position="-.56 .28 .02"><a-plane width=".92" height=".66" material="shader:flat;color:#f3e5cd;opacity:1;transparent:false"></a-plane><a-text id="history-title" position="0 .17 .02" align="center" anchor="center" color="#684a35" width="1.8" value="HAJJ BY SEA"></a-text><a-text id="history-copy" position="0 -.04 .02" align="center" anchor="center" color="#33251d" width="1.7" wrap-count="23" value="Pilgrims arrived through Bab Al-Bunt"></a-text></a-entity>
+<a-entity id="material-card" position=".56 .28 .02"><a-plane width=".92" height=".66" material="shader:flat;color:#f3e5cd;opacity:1;transparent:false"></a-plane><a-text id="material-title" position="0 .17 .02" align="center" anchor="center" color="#684a35" width="1.8" value="WOOD & CRAFT"></a-text><a-text id="material-copy" position="0 -.04 .02" align="center" anchor="center" color="#33251d" width="1.7" wrap-count="23" value="Teak is durable; this anchor's wood is unverified"></a-text></a-entity>
+<a-entity id="audio-button" class="ar-button" position="0 -.48 .04"><a-plane width=".82" height=".23" material="shader:flat;color:#684a35;opacity:1;transparent:false"></a-plane><a-text id="audio-label" position="0 0 .02" align="center" anchor="center" color="#fff8ee" width="1.55" value="▶ PLAY AUDIO GUIDE"></a-text></a-entity>
+</a-entity></a-scene></div>
+<div id="ar-controls"><button class="ar-control" data-topic="history">قصة باب البنط</button><button class="ar-control" data-topic="material">الخشب والصناعة</button><button id="audio-html" class="ar-control">▶ تشغيل المرشد الصوتي</button></div>
+</section>
+<section class="details" id="details"><span class="kicker">MUSEUM GUIDE</span><h2>اكتشف حكاية القطعة</h2><p>اختر بطاقة لقراءة التفاصيل. معلومات عامة عن تاريخ الميناء والمواد، ولا تحدد مادة هذه المرساة بعينها.</p><div class="detail-tabs"><button data-topic="history" aria-pressed="true">التاريخ وباب البنط</button><button data-topic="material" aria-pressed="false">المواد والصناعة</button></div><article id="detail-card" class="detail-card" aria-live="polite"></article></section>
+</main><footer>RED SEA MUSEUM · JEDDAH · AR EXPERIENCE</footer>
 <script>
-const topics={
-wood:{title:"خشب الساج",text:"الساج خشب متين معروف بمقاومته الطبيعية للعوامل الجوية وامتصاص الماء، لذلك استُخدم في أجزاء من القوارب والسفن. تختلف خصائصه حسب مصدر الخشب وجودته؛ ولا نعرف حتى الآن إن كانت هذه المرساة مصنوعة منه.",source:'<a href="https://www.fao.org/4/x4565e/x4565e03.htm" target="_blank" rel="noopener">FAO · Teak</a><a href="https://www.iufro.org/media/fileadmin/publications/world-series/ws36.pdf" target="_blank" rel="noopener">IUFRO · Teak wood quality</a>'},
-salt:{title:"ماء البحر والملوحة",text:"الخشب البحري ليس محصّنًا من التلف. التعرض الطويل للماء قد يسبب تدهورًا، كما قد تهاجم الكائنات البحرية الخشب غير المحمي. لذلك لا ننسب مقاومة مطلقة للملوحة إلى الساج، ولا نؤكد مادة المرساة دون توثيقها.",source:'<a href="https://research.fs.usda.gov/treesearch/34298" target="_blank" rel="noopener">US Forest Service · Durability in marine environments</a><a href="https://research.fs.usda.gov/treesearch/53860" target="_blank" rel="noopener">US Forest Service · Salt damage</a>'},
-anchor:{title:"كيف تعمل المرساة؟",text:"تساعد المرساة السفينة على الثبات عندما يمسك طرفها بالقاع، بينما يخفف الحبل أو السلسلة أثر السحب والحركة. هذا شرح عام؛ يختلف شكل المرساة وطريقة تثبيتها باختلاف نوعها والفترة التاريخية.",source:"شرح عام للنموذج الأولي؛ أضيفي مصدرًا أثريًا عند تحديد قطعة المتحف."}
+// Content is kept in one JSON object so exhibit text can be updated without changing tracking code.
+const guideContent={
+ "history":{
+  "title":"باب البنط ورحلة الحج",
+  "body":"كان ميناء جدة بوابة بحرية مهمة للحجاج القادمين إلى مكة. ويذكر مصدر هيئة تطوير جدة أن رحلة الحج التاريخية تمر بباب البنط، فيما استُخدم المبنى تاريخيًا للجمارك واستقبال القادمين عبر البحر.",
+  "ar":"وصل حجاج كثيرون إلى جدة بحرًا، وكان ميناؤها بوابةً إلى مكة. ارتبط باب البنط باستقبال القادمين، وأصبح اليوم مقر متحف البحر الأحمر.",
+  "source":"<a href='https://www.spa.gov.sa/en/N2591337' target='_blank' rel='noopener'>وكالة الأنباء السعودية · مسار الحج التاريخي</a><a href='https://whc.unesco.org/en/list/1361/' target='_blank' rel='noopener'>UNESCO · Historic Jeddah</a>"
+ },
+ "material":{
+  "title":"الخشب والمواد البحرية",
+  "body":"استُخدم خشب الساج في صناعة السفن لصلابته ومتانته الطبيعية في الظروف البحرية. قد تتآكل القطع المعدنية مع الزمن. لا تتوفر هنا وثيقة تثبت نوع خشب هذه المرساة أو تركيب أجزائها المعدنية.",
+  "ar":"استُخدم الساج في بعض الصناعات البحرية لصلابته ومتانته. لكن لا نجزم أن المرساة المعروضة مصنوعة منه دون توثيق أثري خاص بها.",
+  "source":"<a href='https://www.fao.org/4/x4565e/x4565e03.htm' target='_blank' rel='noopener'>FAO · Teak</a>"
+ }
 };
-const card=document.querySelector("#card"),topicButtons=[...document.querySelectorAll("[data-topic]")];
-function showTopic(key){const t=topics[key];topicButtons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.topic===key));card.innerHTML="<h3>"+t.title+"</h3><p>"+t.text+"</p><div class='sources'>المصادر: "+t.source+"</div>";document.querySelector("#answer").textContent="تم فتح بطاقة "+t.title;}
-topicButtons.forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
-document.querySelector("#ask").addEventListener("click",()=>{const q=document.querySelector("#question").value.trim();if(!q)return;const key=/ساج|خشب|مادة|wood|teak/i.test(q)?"wood":/ملح|ماء|salt|water/i.test(q)?"salt":"anchor";showTopic(key);document.querySelector("#answer").textContent=topics[key].text;});
-showTopic("wood");
-const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint");
-target.addEventListener("targetFound",()=>{hint.hidden=true;document.querySelector("#info-section").hidden=false;});
-target.addEventListener("targetLost",()=>{hint.hidden=false;document.querySelector("#info-section").hidden=true;});
-let cameraStarted=false;
-async function beginCamera(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(cameraStarted)return;const system=scene.systems["mindar-image-system"];if(!system){hint.querySelector("small").textContent="جارٍ تجهيز الكاميرا…";setTimeout(beginCamera,700);return;}try{await system.start();cameraStarted=true;hint.querySelector("b").textContent="الكاميرا بانتظار صورة المرساة";hint.querySelector("small").textContent="وجّه الكاميرا للصورة المطبوعة أو المعروضة على شاشة أخرى.";}catch(e){hint.querySelector("b").textContent="تعذّر تشغيل الكاميرا";hint.querySelector("small").textContent="تأكدي أن الموقع يعمل عبر HTTPS واسمحي باستخدام الكاميرا.";hint.hidden=false;}}
-document.querySelector("#start").addEventListener("click",beginCamera);
-document.querySelector("#save-target").addEventListener("click",()=>{beginCamera();});
-</script></body></html>
+const detail=document.querySelector("#detail-card");
+function showTopic(key){const item=guideContent[key];document.querySelectorAll("[data-topic]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.topic===key)));detail.innerHTML="<h3>"+item.title+"</h3><p>"+item.ar+"</p><div class='source'>المصادر: "+item.source+"</div>";}
+document.querySelectorAll("[data-topic]").forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
+showTopic("history");
+const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),controls=document.querySelector("#ar-controls"),error=document.querySelector("#camera-error"),audioLabel=document.querySelector("#audio-label");
+function setARText(){document.querySelector("#history-title").setAttribute("value","HAJJ BY SEA");document.querySelector("#history-copy").setAttribute("value","Pilgrims arrived through Bab Al-Bunt");document.querySelector("#material-title").setAttribute("value","WOOD & CRAFT");document.querySelector("#material-copy").setAttribute("value","Teak is durable; anchor wood is unverified");}
+target.addEventListener("targetFound",()=>{hint.hidden=true;controls.classList.add("visible");});
+target.addEventListener("targetLost",()=>{hint.hidden=false;controls.classList.remove("visible");});
+let started=false;
+async function startAR(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(started)return;const system=scene.systems["mindar-image-system"];if(!system){hint.querySelector("small").textContent="جارٍ تجهيز الكاميرا…";setTimeout(startAR,500);return;}error.hidden=true;try{await system.start();started=true;hint.querySelector("b").textContent="الكاميرا بانتظار صورة المرساة";}catch(e){hint.hidden=false;hint.querySelector("b").textContent="تعذّر تشغيل الكاميرا";hint.querySelector("small").textContent="اسمح للمتصفح بالكاميرا وتأكد من فتح الرابط عبر HTTPS.";error.textContent="إذا استمرت المشكلة: افتح الرابط في Safari أو Chrome واسمح بإذن الكاميرا.";error.hidden=false;}}
+document.querySelector("#start").addEventListener("click",startAR);
+document.querySelector(".secondary").addEventListener("click",()=>{startAR();});
+function playGuide(){const text=guideContent.history.ar+" "+guideContent.material.ar;if(!("speechSynthesis" in window)){error.textContent="التشغيل الصوتي غير مدعوم في هذا المتصفح.";error.hidden=false;return;}window.speechSynthesis.cancel();const utterance=new SpeechSynthesisUtterance(text);utterance.lang="ar-SA";utterance.rate=.9;utterance.onstart=()=>{if(audioLabel)audioLabel.setAttribute("value","■ STOP AUDIO GUIDE");document.querySelector("#audio-html").textContent="■ إيقاف المرشد الصوتي";};utterance.onend=()=>{if(audioLabel)audioLabel.setAttribute("value","▶ PLAY AUDIO GUIDE");document.querySelector("#audio-html").textContent="▶ تشغيل المرشد الصوتي";};window.speechSynthesis.speak(utterance);}
+document.querySelector("#audio-html").addEventListener("click",()=>{if(window.speechSynthesis&&window.speechSynthesis.speaking){window.speechSynthesis.cancel();document.querySelector("#audio-html").textContent="▶ تشغيل المرشد الصوتي";if(audioLabel)audioLabel.setAttribute("value","▶ PLAY AUDIO GUIDE");}else playGuide();});
+document.querySelector("#audio-button").addEventListener("click",playGuide);
+document.querySelector("#history-card").addEventListener("click",()=>showTopic("history"));
+document.querySelector("#material-card").addEventListener("click",()=>showTopic("material"));
+</script>
+</body></html>
