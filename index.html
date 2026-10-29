@@ -108,7 +108,10 @@ function positionHotspots(){if(!target.object3D.visible)return;scene.camera.upda
 document.querySelector("#hotspot-green").addEventListener("click",()=>openCard("industry"));document.querySelector("#hotspot-blue").addEventListener("click",()=>openCard("story"));document.querySelector("#screen-close").addEventListener("click",closeCard);document.querySelector("#screen-audio").addEventListener("click",speakTopic);
 let readyTimer;
 async function startAR(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(started)return;const system=scene.systems["mindar-image-system"];if(!system){hint.textContent="جارٍ تجهيز الكاميرا…";readyTimer=setTimeout(startAR,500);return;}error.hidden=true;hint.textContent="جارٍ تشغيل الكاميرا…";try{await system.start();started=true;hint.textContent="وجّه الكاميرا نحو صورة المرساة";}catch(e){hint.textContent="لم تعمل الكاميرا. اسمح بإذن الكاميرا ثم أعد المحاولة.";error.textContent="تأكد من فتح الموقع عبر HTTPS واستخدام Safari أو Chrome.";error.hidden=false;}}
-document.querySelector("#lang-toggle").addEventListener("click",()=>{language=language==="ar"?"en":"ar";applyLanguage();if(activeTopic)openCard(activeTopic);});\ndocument.querySelector("#lang-toggle").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();document.querySelector("#lang-toggle").click();}});\napplyLanguage();\ndocument.querySelector("#start").addEventListener("click",startAR);
+document.querySelector("#lang-toggle").addEventListener("click",()=>{language=language==="ar"?"en":"ar";applyLanguage();if(activeTopic)openCard(activeTopic);});
+document.querySelector("#lang-toggle").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();document.querySelector("#lang-toggle").click();}});
+applyLanguage();
+document.querySelector("#start").addEventListener("click",startAR);
 document.querySelector(".download").addEventListener("click",()=>startAR());
 scene.addEventListener("loaded",()=>{target.object3D.visible=false;
  // Make AR controls tappable on iPhone touchscreens as well as desktop mouse.
