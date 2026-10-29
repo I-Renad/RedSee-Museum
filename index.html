@@ -8,14 +8,14 @@
 <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 <style>
-:root{--ink:#18383a;--sea:#123a40;--sand:#f1eadc;--paper:#faf8f2;--gold:#b98e51;--muted:#687875;--line:#d8cebb}
+:root{--ink:#3b2b20;--sea:#5a4030;--sand:#efe2d0;--paper:#faf5ec;--gold:#ad7d45;--muted:#76695c;--line:#d9c8b0}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"IBM Plex Sans Arabic",sans-serif}
-header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fbfaf6}
+header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#faf5ec}
 .brand{display:flex;align-items:center;gap:11px}.mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sea);color:#f1d39b;font-size:21px}.brand-title{font-size:14px;font-weight:700}.brand small{display:block;font-size:9px;letter-spacing:.14em;color:var(--muted);margin-top:3px}
 .header-tag{font-size:11px;color:#927346;letter-spacing:.14em}
 .hero{padding:50px clamp(20px,8vw,120px);display:grid;grid-template-columns:1fr .95fr;gap:7vw;align-items:center;background:linear-gradient(120deg,#f7f4eb,#e9e3d6);min-height:470px}
 .kicker{color:#927346;font-size:10px;letter-spacing:.19em}.hero h1{font-size:clamp(38px,5vw,66px);line-height:1.25;margin:15px 0;color:var(--sea)}.hero p{max-width:460px;line-height:2;color:#5d706c;font-size:15px}
-.primary{margin-top:16px;background:var(--sea);color:white;padding:14px 22px;border:0;border-radius:4px;font-weight:bold;font-size:14px;cursor:pointer}.primary:hover{background:#20565a}.primary span{color:#e7c17f;margin-inline-start:18px}
+.primary{margin-top:16px;background:var(--sea);color:white;padding:14px 22px;border:0;border-radius:4px;font-weight:bold;font-size:14px;cursor:pointer}.primary:hover{background:#72543a}.primary span{color:#e7c17f;margin-inline-start:18px}
 .hero-note{margin-top:13px;font-size:10px;color:#86775f}
 .target-frame{background:#fffdf8;padding:11px;border:1px solid #cfc1a8;box-shadow:0 16px 40px #40331d1c;position:relative}
 .target-frame:before{content:"";position:absolute;inset:5px;border:1px solid #d8cbb4;pointer-events:none}
@@ -23,29 +23,30 @@ header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:cente
 .target-caption{display:flex;justify-content:space-between;gap:10px;padding:10px 4px 2px;font-size:10px;color:#786c58}.target-caption span:last-child{letter-spacing:.1em}
 .scanner-section{padding:46px clamp(20px,8vw,120px) 60px}
 .scanner-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.scanner-heading h2{font-size:22px;margin:5px 0;color:var(--sea)}.scanner-heading p{font-size:12px;color:var(--muted);margin:0}
-.scanner{height:min(52vh,480px);min-height:300px;background:#082c33;position:relative;overflow:hidden}
+.scanner{height:min(52vh,480px);min-height:300px;background:#392a21;position:relative;overflow:hidden}
 a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}
 #hint{position:absolute;z-index:3;inset:0;display:grid;align-content:center;justify-items:center;gap:8px;background:#061f26b7;color:#f1d39b;text-align:center;padding:20px;pointer-events:none}
 #hint .target-icon{font-size:42px}#hint b{font-size:15px}#hint small{color:#d1d7c9}
-.info-section{padding:46px clamp(20px,8vw,120px) 54px;background:#eee8db}
+.info-section{padding:46px clamp(20px,8vw,120px) 54px;background:#eee1d0}
 .info-section h2{color:var(--sea);font-size:23px;margin:5px 0}.info-section>p{font-size:13px;color:#63716a;margin:0 0 18px}
-.info-buttons{display:flex;gap:9px;flex-wrap:wrap}.info-buttons button{padding:11px 16px;border:1px solid #cbbd9f;background:#faf8f2;color:#244346;border-radius:4px;cursor:pointer}.info-buttons button[aria-pressed=true],.info-buttons button:hover{background:var(--sea);color:white;border-color:var(--sea)}
+.info-buttons{display:flex;gap:9px;flex-wrap:wrap}.info-buttons button{padding:11px 16px;border:1px solid #cbbd9f;background:#faf8f2;color:#4e3829;border-radius:4px;cursor:pointer}.info-buttons button[aria-pressed=true],.info-buttons button:hover{background:var(--sea);color:white;border-color:var(--sea)}
 .info-card{margin-top:14px;min-height:120px;background:#fbfaf6;border:1px solid #ddd2c0;border-right:4px solid var(--gold);padding:17px 20px;line-height:1.9}.info-card h3{margin:0 0 5px;color:#997340;font-size:17px}.info-card p{margin:0;font-size:13px;color:#405a56}.sources{padding-top:9px;margin-top:10px;border-top:1px solid #e7dfd2;font-size:10px;color:#6f7770}.sources a{color:#826137;margin-inline-start:8px}
 .ask{margin-top:20px;display:flex;gap:8px;max-width:600px}.ask input{flex:1;min-width:0;padding:11px;border:1px solid #d1c6b5;background:#fffdf9;border-radius:4px}.ask button{padding:0 18px;border:0;background:var(--sea);color:white;border-radius:4px;cursor:pointer}.answer{font-size:12px;color:#63716a;min-height:22px}
 footer{padding:17px 24px;background:var(--sea);color:#e5e0d3;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em}
 @media(max-width:760px){header{height:66px;padding:0 18px}.hero{grid-template-columns:1fr;padding:35px 20px;gap:24px}.hero h1{font-size:42px}.target-frame{max-width:560px}.target-frame img{max-height:255px}.scanner-section{padding:35px 18px 42px}.scanner{height:48vh;min-height:280px}.scanner-heading{display:block}.scanner-heading p{margin-top:4px}.info-section{padding:34px 18px 40px}.info-buttons button{flex:1 1 40%}footer{display:block;text-align:center;line-height:2}}
+.secondary{display:inline-block;margin:8px 8px 0 0;padding:12px 16px;border:1px solid #b59b79;border-radius:4px;color:#5a4030;text-decoration:none;font-size:13px;background:#f8f0e5}.secondary:hover{background:#e6d4bd}.scanner-status{font-size:12px;color:#776047}
 </style>
 </head>
 <body>
 <header><div class="brand"><span class="mark">⚓</span><div class="brand-title">متحف البحر الأحمر<small>RED SEA MUSEUM · جدة</small></div></div><span class="header-tag">حكاية من الساحل</span></header>
 <main>
 <section class="hero">
-<div><span class="kicker">تجربة تفاعلية · واقع معزز</span><h1>حكاية المرساة</h1><p>وجّهي كاميرا جوالك إلى صورة المرساة، وشاهدي بطاقة تعريفية تظهر فوقها. بعدها افتحي موضوعًا من الأزرار لمعرفة المزيد عن المرساة والخشب البحري.</p><button id="start" class="primary">📷 بدء الواقع المعزز <span>↗</span></button><div class="hero-note">اسمحي للمتصفح باستخدام الكاميرا عند الطلب.</div></div>
+<div><span class="kicker">تجربة تفاعلية · واقع معزز</span><h1>حكاية المرساة</h1><p>وجّهي كاميرا جوالك إلى صورة المرساة، وشاهدي بطاقة تعريفية تظهر فوقها. بعدها افتحي موضوعًا من الأزرار لمعرفة المزيد عن المرساة والخشب البحري.</p><a id="save-target" class="secondary" href="assets/anchor-target.jpg" download="red-sea-anchor-target.jpg">⬇️ حفظ صورة الهدف</a><button id="start" class="primary">📷 بدء الواقع المعزز <span>↗</span></button><div class="hero-note">اسمحي للمتصفح باستخدام الكاميرا عند الطلب.</div></div>
 <figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة الأثرية المستخدمة كهدف للتعرف البصري"><figcaption class="target-caption"><span>صورة الهدف · اعرضيها على شاشة ثانية أو اطبعيها</span><span>OBJECT 01</span></figcaption></figure>
 </section>
-<section class="scanner-section"><div class="scanner-heading"><div><span class="kicker">IMAGE TRACKING · MINDAR</span><h2>وجّهي الكاميرا نحو صورة الهدف</h2></div><p>تأكدي من وضوح الصورة والإضاءة حولها.</p></div><div class="scanner"><div id="hint"><span class="target-icon">⌖</span><b>الكاميرا بانتظار صورة المرساة</b><small>اضغطي «بدء الواقع المعزز» ثم وجّهيها للصورة أعلاه</small></div>
-<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded color-space="sRGB" renderer="colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false"><a-camera position="0 0 0" look-controls="enabled:false"></a-camera><a-entity id="target" mindar-image-target="targetIndex:0"><a-plane position="0 0 0" width="1.15" height=".68" color="#173b40" opacity=".96"></a-plane><a-circle position="-.36 .12 .02" radius=".12" color="#d6b476"></a-circle><a-text value="ANCHOR 01" position="-.18 .12 .03" color="#f4ead6" width="1.2"></a-text><a-text value="RED SEA MUSEUM" position="-.18 -.03 .03" color="#d6b476" width="1.1"></a-text><a-text value="Open an information card below" position="-.18 -.18 .03" color="#f4ead6" width="1.15"></a-text></a-entity></a-scene></div></section>
-<section class="info-section"><span class="kicker">دليل القطعة</span><h2>اختاري موضوعًا</h2><p>معلومات عامة موثقة عن الخشب البحري، وليست فحصًا لهذه المرساة بعينها.</p>
+<section class="scanner-section" id="scanner"><div class="scanner-heading"><div><span class="kicker">IMAGE TRACKING · MINDAR</span><h2>وجّهي الكاميرا نحو صورة الهدف</h2></div><p>تأكدي من وضوح الصورة والإضاءة حولها.</p></div><div class="scanner"><div id="hint"><span class="target-icon">⌖</span><b>الكاميرا بانتظار صورة المرساة</b><small>اضغطي «بدء الواقع المعزز» ثم وجّهيها للصورة أعلاه</small></div>
+<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded color-space="sRGB" renderer="colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false"><a-camera position="0 0 0" look-controls="enabled:false"></a-camera><a-entity id="target" mindar-image-target="targetIndex:0"><a-plane position="0 0 0" width="1.15" height=".68" color="#5a4030" opacity=".96"></a-plane><a-circle position="-.36 .12 .02" radius=".12" color="#d6b476"></a-circle><a-text value="ANCHOR 01" position="-.18 .12 .03" color="#f4ead6" width="1.2"></a-text><a-text value="RED SEA MUSEUM" position="-.18 -.03 .03" color="#d6b476" width="1.1"></a-text><a-text value="Open an information card below" position="-.18 -.18 .03" color="#f4ead6" width="1.15"></a-text></a-entity></a-scene></div></section>
+<section class="info-section" id="info-section" hidden><span class="kicker">دليل القطعة</span><h2>اختاري موضوعًا</h2><p>معلومات عامة موثقة عن الخشب البحري، وليست فحصًا لهذه المرساة بعينها.</p>
 <div class="info-buttons"><button data-topic="wood" aria-pressed="true">خشب الساج</button><button data-topic="salt" aria-pressed="false">ماء البحر والملوحة</button><button data-topic="anchor" aria-pressed="false">كيف تعمل المرساة؟</button></div><article id="card" class="info-card" aria-live="polite"></article>
 <div class="ask"><input id="question" placeholder="اكتبي سؤالًا عن المرساة" maxlength="200"><button id="ask">اسألي المرشد</button></div><p id="answer" class="answer" aria-live="polite">إجابات هذا النموذج جاهزة ومبنية على البطاقات أعلاه.</p></section></main>
 <footer><span>نموذج أولي طلابي · المعلومات العامة موثقة</span><span>AR × COMPUTER VISION</span></footer>
@@ -61,7 +62,10 @@ topicButtons.forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic
 document.querySelector("#ask").addEventListener("click",()=>{const q=document.querySelector("#question").value.trim();if(!q)return;const key=/ساج|خشب|مادة|wood|teak/i.test(q)?"wood":/ملح|ماء|salt|water/i.test(q)?"salt":"anchor";showTopic(key);document.querySelector("#answer").textContent=topics[key].text;});
 showTopic("wood");
 const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint");
-target.addEventListener("targetFound",()=>hint.hidden=true);
-target.addEventListener("targetLost",()=>hint.hidden=false);
-document.querySelector("#start").addEventListener("click",()=>{const system=scene.systems["mindar-image-system"];if(!system){hint.querySelector("small").textContent="جارٍ تجهيز الكاميرا…";setTimeout(()=>document.querySelector("#start").click(),700);return;}system.start().catch(()=>{hint.querySelector("b").textContent="تعذّر تشغيل الكاميرا";hint.querySelector("small").textContent="تأكدي أن الموقع يعمل عبر HTTPS واسمحي باستخدام الكاميرا.";hint.hidden=false;});});
+target.addEventListener("targetFound",()=>{hint.hidden=true;document.querySelector("#info-section").hidden=false;});
+target.addEventListener("targetLost",()=>{hint.hidden=false;document.querySelector("#info-section").hidden=true;});
+let cameraStarted=false;
+async function beginCamera(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(cameraStarted)return;const system=scene.systems["mindar-image-system"];if(!system){hint.querySelector("small").textContent="جارٍ تجهيز الكاميرا…";setTimeout(beginCamera,700);return;}try{await system.start();cameraStarted=true;hint.querySelector("b").textContent="الكاميرا بانتظار صورة المرساة";hint.querySelector("small").textContent="وجّهي الكاميرا للصورة المطبوعة أو المعروضة على شاشة أخرى.";}catch(e){hint.querySelector("b").textContent="تعذّر تشغيل الكاميرا";hint.querySelector("small").textContent="تأكدي أن الموقع يعمل عبر HTTPS واسمحي باستخدام الكاميرا.";hint.hidden=false;}}
+document.querySelector("#start").addEventListener("click",beginCamera);
+document.querySelector("#save-target").addEventListener("click",()=>{beginCamera();});
 </script></body></html>
