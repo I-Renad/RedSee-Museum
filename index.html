@@ -30,7 +30,7 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 <section class="hero"><div><span class="kicker">تجربة واقع معزز · تتبّع صورة</span><h1>حكاية المرساة</h1><p>وجّه كاميرا الجوال إلى صورة المرساة. عند التعرّف عليها، تظهر ثلاثة أسهم فوق الصورة؛ اضغط على أي سهم لعرض بطاقته بالعربية.</p><a class="download" href="assets/anchor-target.jpg" download="red-sea-anchor-target.jpg">⬇ حفظ صورة الهدف</a><button id="start" class="primary">📷 تشغيل الكاميرا</button><div class="note">اسمح باستخدام الكاميرا، واعرض صورة الهدف على جهاز آخر أو اطبعها.</div></div><figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة المستخدمة للتعرّف بالواقع المعزز"><figcaption>صورة المرساة · هدف التعرّف</figcaption></figure></section>
 <section class="instructions"><h2>طريقة التجربة</h2><div class="steps"><div class="step"><b>١ · جهّز الصورة</b>اعرض صورة المرساة على جهاز آخر أو اطبعها.</div><div class="step"><b>٢ · افتح الموقع على الجوال</b>اسمح للمتصفح باستخدام الكاميرا.</div><div class="step"><b>٣ · وجّه الكاميرا</b>وجّهها نحو صورة المرساة لتظهر الأسهم فوقها.</div></div></section>
 <section class="scanner-section" id="scanner"><div class="scanner-head"><div><span class="kicker">تجربة مباشرة</span><h2>وجّه الكاميرا نحو صورة المرساة</h2></div><p>تظهر الأسهم بعد التعرّف على الصورة.</p></div>
-<div class="legend" aria-label="دليل الأسهم"><span><i class="dot green"></i>الصناعة</span><span><i class="dot blue"></i>قصة المرساة</span><span><i class="dot red"></i>تاريخ المرساة</span></div>
+<div class="legend" aria-label="دليل الأسهم"><span><i class="dot green"></i>المادة والصناعة</span><span><i class="dot blue"></i>القصة والتاريخ</span></div>
 <div class="scanner"><div id="hint">اضغط «تشغيل الكاميرا» لبدء التجربة</div><div id="camera-error" hidden></div>
 <a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded background="transparent:true" color-space="sRGB" renderer="alpha:true; antialias:true; colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false">
 <a-camera position="0 0 0" look-controls="enabled:false" cursor="rayOrigin:mouse; fuse:false" raycaster="objects:.tap-target"></a-camera>
@@ -38,9 +38,8 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 <!-- Interactive arrows sit directly over the tracked anchor image. -->
 <a-entity id="arrow-green" class="tap-target" position=".20 -.14 .04"><a-circle radius=".075" color="#16a765" material="shader:flat;side:double"></a-circle><a-text value="↗" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".65"></a-text></a-entity>
 <a-entity id="arrow-blue" class="tap-target" position=".29 -.43 .04"><a-circle radius=".075" color="#2575e6" material="shader:flat;side:double"></a-circle><a-text value="↘" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".65"></a-text></a-entity>
-<a-entity id="arrow-red" class="tap-target" position="-.32 -.43 .04"><a-circle radius=".075" color="#e24735" material="shader:flat;side:double"></a-circle><a-text value="↙" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".65"></a-text></a-entity>
 <!-- One floating card opens at a time; its Arabic text is rendered to a canvas texture for proper RTL shaping. -->
-<a-plane id="info-panel" position="0 .54 .08" width="1.42" height=".78" visible="false" material="shader:flat;transparent:true;side:double"></a-plane>
+<a-plane id="info-panel" position="0 .54 .08" width="1.42" height=".92" visible="false" material="shader:flat;transparent:true;side:double"></a-plane>
 <a-entity id="close-panel" class="tap-target" position=".65 .87 .10" visible="false"><a-circle radius=".055" color="#684a35" material="shader:flat;side:double"></a-circle><a-text value="×" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".5"></a-text></a-entity>
 <a-entity id="listen-panel" class="tap-target" position=".49 .25 .10" visible="false"><a-circle radius=".07" color="#684a35" material="shader:flat;side:double"></a-circle><a-text value="▶" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".42"></a-text></a-entity>
 </a-entity></a-scene></div>
@@ -48,9 +47,8 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 </main><footer>متحف البحر الأحمر · جدة</footer>
 <script>
 const guide={
- industry:{title:"المادة والصناعة",text:"أكد فحص الأشعة السينية المحمولة أن هذه المرساة حديدية. استُخدم الساج في بعض الصناعات البحرية لمتانته، لكن هذه القطعة ليست مرساة خشبية ولا يثبت الفحص وجود الساج فيها."},
- story:{title:"قصة المرساة",text:"عُثر على هذه المرساة على ساحل البحر الأحمر قرب جدة. وبعد استعادتها، استخدم فريق الترميم المسح ثلاثي الأبعاد وإعادة البناء الرقمي لإظهار شكلها قبل عرضها في متحف البحر الأحمر."},
- history:{title:"تاريخ المرساة",text:"تعود هذه المرساة الحديدية المعروضة في متحف البحر الأحمر إلى القرن الثامن عشر. يبلغ طولها نحو 2.7 متر، ويقدّر وزنها بين 350 و400 كيلوغرام، ويرتبط تصميمها بمراسي تلك الحقبة."}
+ industry:{title:"المادة والصناعة",text:"جمعت بعض المراسي التقليدية بين عارضة خشبية صلبة، مثل الساج، وأجزاء حديدية قوية. عُرف الساج بمتانته ومقاومته للتلف البحري، بينما تساعد أذرع المرساة على تثبيت السفينة بقاع البحر. أما هذه القطعة، فيؤكد الفحص المنشور أنها حديدية ولا يثبت وجود الساج فيها."},
+ story:{title:"القصة والتاريخ",text:"عُثر على هذه المرساة قرب ساحل جدة ويعود تاريخها إلى أواخر القرن الثامن عشر. وكانت جدة تستقبل الحجاج بحرًا؛ تخيّل سفنًا كالسنبوك والبواري بعد رحلة طويلة وسط أمواج البحر الأحمر، ترسو عند باب البنط. هذه حكاية سياقية، ولا يثبت المصدر أن هذه القطعة بعينها رافقت سفن الحجاج."}
 };
 const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),error=document.querySelector("#camera-error");
 const panel=document.querySelector("#info-panel"),closeButton=document.querySelector("#close-panel"),listenButton=document.querySelector("#listen-panel");
@@ -58,12 +56,12 @@ let activeTopic=null,started=false,cardTexture=null;
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
 function wrapRTL(ctx,text,maxWidth){const words=text.split(/\s+/),lines=[];let line="";for(const word of words){const candidate=line?line+" "+word:word;if(ctx.measureText(candidate).width>maxWidth&&line){lines.push(line);line=word;}else line=candidate;}if(line)lines.push(line);return lines;}
 function drawCard(topic){
- const item=guide[topic],canvas=document.createElement("canvas");canvas.width=1200;canvas.height=660;const ctx=canvas.getContext("2d");
- ctx.fillStyle="#fbf4e7";roundRect(ctx,8,8,1184,644,32);ctx.fill();ctx.strokeStyle="#b99668";ctx.lineWidth=10;roundRect(ctx,8,8,1184,644,32);ctx.stroke();
+ const item=guide[topic],canvas=document.createElement("canvas");canvas.width=1200;canvas.height=760;const ctx=canvas.getContext("2d");
+ ctx.fillStyle="#fbf4e7";roundRect(ctx,8,8,1184,744,32);ctx.fill();ctx.strokeStyle="#b99668";ctx.lineWidth=10;roundRect(ctx,8,8,1184,644,32);ctx.stroke();
  ctx.direction="rtl";ctx.textAlign="right";ctx.fillStyle="#684a35";ctx.font="bold 62px Arial";ctx.fillText(item.title,1110,125);
  ctx.strokeStyle="#cfb183";ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(80,165);ctx.lineTo(1120,165);ctx.stroke();
- ctx.fillStyle="#38291f";ctx.font="48px Arial";const lines=wrapRTL(ctx,item.text,1030);lines.slice(0,5).forEach((line,i)=>ctx.fillText(line,1110,245+i*72));
- ctx.fillStyle="#927448";ctx.font="bold 30px Arial";ctx.fillText("اضغط ▶ للاستماع إلى البطاقة",1110,580);ctx.font="24px Arial";ctx.fillText("المصدر: وكالة الأنباء السعودية · واس",1110,625);
+ ctx.fillStyle="#38291f";ctx.font="40px Arial";const lines=wrapRTL(ctx,item.text,1030);lines.slice(0,7).forEach((line,i)=>ctx.fillText(line,1110,225+i*64));
+ ctx.fillStyle="#927448";ctx.font="bold 28px Arial";ctx.fillText("اضغط ▶ للاستماع إلى البطاقة",1110,710);
  if(cardTexture)cardTexture.dispose();cardTexture=new THREE.CanvasTexture(canvas);cardTexture.needsUpdate=true;
  const mesh=panel.getObject3D("mesh");if(mesh){mesh.material.map=cardTexture;mesh.material.needsUpdate=true;}
 }
@@ -71,7 +69,6 @@ function openCard(topic){activeTopic=topic;drawCard(topic);panel.setAttribute("v
 function closeCard(){activeTopic=null;panel.setAttribute("visible",false);closeButton.setAttribute("visible",false);listenButton.setAttribute("visible",false);if(window.speechSynthesis)window.speechSynthesis.cancel();}
 document.querySelector("#arrow-green").addEventListener("click",()=>openCard("industry"));
 document.querySelector("#arrow-blue").addEventListener("click",()=>openCard("story"));
-document.querySelector("#arrow-red").addEventListener("click",()=>openCard("history"));
 closeButton.addEventListener("click",closeCard);
 function speakTopic(){if(!activeTopic)return;if(!("speechSynthesis" in window)){error.textContent="ميزة النطق غير مدعومة في هذا المتصفح.";error.hidden=false;return;}window.speechSynthesis.cancel();const speech=new SpeechSynthesisUtterance(guide[activeTopic].title+". "+guide[activeTopic].text);speech.lang="ar-SA";speech.rate=.88;window.speechSynthesis.speak(speech);}
 listenButton.addEventListener("click",speakTopic);
