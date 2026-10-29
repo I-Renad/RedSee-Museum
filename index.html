@@ -27,10 +27,10 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 </style>
 </head>
 <body>
-<header><div class="brand"><span class="mark">⚓</span><div>متحف البحر الأحمر<small>RED SEA MUSEUM · JEDDAH</small></div></div><span class="tag">دليل تفاعلي بالواقع المعزز</span></header>
+<header><div class="brand"><span class="mark">⚓</span><div id="brand-name">متحف البحر الأحمر<small>RED SEA MUSEUM · JEDDAH</small></div></div><span class="tag" id="lang-toggle" role="button" tabindex="0">English</span></header>
 <main>
 <section class="hero"><div><span class="kicker">تجربة واقع معزز · تتبّع صورة</span><h1>حكاية المرساة</h1><p>وجّه كاميرا الجوال إلى صورة المرساة. عند التعرّف عليها، تظهر ثلاثة أسهم فوق الصورة؛ اضغط على أي سهم لعرض بطاقته بالعربية.</p><a class="download" href="assets/anchor-target.jpg" download="red-sea-anchor-target.jpg">⬇ حفظ صورة الهدف</a><button id="start" class="primary">📷 تشغيل الكاميرا</button><div class="note">اسمح باستخدام الكاميرا، واعرض صورة الهدف على جهاز آخر أو اطبعها.</div></div><figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة المستخدمة للتعرّف بالواقع المعزز"><figcaption>صورة المرساة · هدف التعرّف</figcaption></figure></section>
-<section class="instructions"><h2>طريقة التجربة</h2><div class="steps"><div class="step"><b>١ · جهّز الصورة</b>اعرض صورة المرساة على جهاز آخر أو اطبعها.</div><div class="step"><b>٢ · افتح الموقع على الجوال</b>اسمح للمتصفح باستخدام الكاميرا.</div><div class="step"><b>٣ · وجّه الكاميرا</b>وجّهها نحو صورة المرساة لتظهر الأسهم فوقها.</div></div></section>
+<section class="instructions"><h2 id="instructions-title">طريقة التجربة</h2><div class="steps"><div class="step"><b>١ · جهّز الصورة</b>اعرض صورة المرساة على جهاز آخر أو اطبعها.</div><div class="step"><b>٢ · افتح الموقع على الجوال</b>اسمح للمتصفح باستخدام الكاميرا.</div><div class="step"><b>٣ · وجّه الكاميرا</b>وجّهها نحو صورة المرساة لتظهر الأسهم فوقها.</div></div></section>
 <section class="scanner-section" id="scanner"><div class="scanner-head"><div><span class="kicker">تجربة مباشرة</span><h2>وجّه الكاميرا نحو صورة المرساة</h2></div><p>تظهر الأسهم بعد التعرّف على الصورة.</p></div>
 <div class="legend" aria-label="دليل الأسهم"><span><i class="legend-arrow">↗</i>المادة والصناعة</span><span><i class="legend-arrow">↗</i>القصة والتاريخ</span></div>
 <div class="scanner"><div id="hint">اضغط «تشغيل الكاميرا» لبدء التجربة</div><div id="camera-error" hidden></div><button id="hotspot-green" class="hotspot green" aria-label="المادة والصناعة">↗</button><button id="hotspot-blue" class="hotspot blue" aria-label="القصة والتاريخ">↗</button><article id="screen-card" class="screen-card" hidden><button id="screen-close" class="card-close" aria-label="إغلاق">×</button><h3 id="screen-title"></h3><p id="screen-text"></p><button id="screen-audio">▶ استمع للبطاقة</button></article>
@@ -46,13 +46,41 @@ footer{padding:15px;text-align:center;background:var(--brown);color:#efe3cf;font
 <a-entity id="listen-panel" class="tap-target" position=".49 .25 .10" visible="false"><a-circle radius=".07" color="#684a35" material="shader:flat;side:double"></a-circle><a-text value="▶" position="0 0 .01" align="center" anchor="center" color="#ffffff" width=".42"></a-text></a-entity>
 </a-entity></a-scene></div>
 </section>
-</main><footer>متحف البحر الأحمر · جدة</footer>
+</main><footer id="footer-text">متحف البحر الأحمر · جدة</footer>
 <script>
+const i18n={
+ ar:{brand:"متحف البحر الأحمر",tag:"دليل تفاعلي بالواقع المعزز",kicker:"تجربة واقع معزز · تتبّع صورة",title:"حكاية المرساة",intro:"وجّه كاميرا الجوال إلى صورة المرساة. عند التعرّف عليها، تظهر أسهم فوق الصورة؛ اضغط على أي سهم لعرض بطاقته بالعربية.",download:"⬇ حفظ صورة الهدف",start:"📷 تشغيل الكاميرا",note:"اسمح باستخدام الكاميرا، واعرض صورة الهدف على جهاز آخر أو اطبعها.",caption:"صورة المرساة · هدف التعرّف",instructions:"طريقة التجربة",step1:"١ · جهّز الصورة",step1b:"اعرض صورة المرساة على جهاز آخر أو اطبعها.",step2:"٢ · افتح الموقع على الجوال",step2b:"اسمح للمتصفح باستخدام الكاميرا.",step3:"٣ · وجّه الكاميرا",step3b:"وجّهها نحو صورة المرساة لتظهر الأسهم.",live:"تجربة مباشرة",aim:"وجّه الكاميرا نحو صورة المرساة",hint:"تظهر الأسهم بعد التعرّف على الصورة.",industry:"المادة والصناعة",story:"القصة والتاريخ",wait:"اضغط «تشغيل الكاميرا» لبدء التجربة",footer:"متحف البحر الأحمر · جدة",audio:"▶ استمع للبطاقة",error:"ميزة النطق غير مدعومة في هذا المتصفح."},
+ en:{brand:"Red Sea Museum",tag:"Augmented Reality Guide",kicker:"Augmented Reality · Image Tracking",title:"The Anchor’s Story",intro:"Point your phone camera at the anchor image. Once it is recognized, arrows appear over it. Tap an arrow to open its information card.",download:"⬇ Save target image",start:"📷 Start camera",note:"Allow camera access, then display the target image on another device or print it.",caption:"Anchor image · tracking target",instructions:"How to try it",step1:"1 · Prepare the image",step1b:"Display the anchor image on another device or print it.",step2:"2 · Open the site on your phone",step2b:"Allow the browser to use the camera.",step3:"3 · Point the camera",step3b:"Point it at the anchor image to show the arrows.",live:"Live experience",aim:"Point the camera at the anchor image",hint:"Arrows appear when the image is recognized.",industry:"Material & Craft",story:"Story & History",wait:"Tap “Start camera” to begin",footer:"Red Sea Museum · Jeddah",audio:"▶ Listen to this card",error:"Speech is not supported in this browser."}
+};
+let language="ar";
+const englishGuide={
+ industry:{title:"Material & Craft",text:"Traditional anchors combined strong wooden stocks, such as teak, with durable iron parts. Teak is known for its strength and resistance to marine wear. The metal flukes helped hold a vessel on a rocky seabed, sometimes surrounded by coral. Published analysis identifies this particular object as iron and does not confirm teak in its construction."},
+ story:{title:"Story & History",text:"Imagine Hajj vessels such as the sanbuk and bawari, after months of travel through the Red Sea, lowering their anchors at the historic port of Bab Al-Bunt. This anchor was found near Jeddah and dates to the mid-to-late 18th century. The pilgrimage scene is historical context; no known source confirms this specific anchor served those ships."}
+};
+function text(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
+function applyLanguage(){
+ const t=i18n[language],en=language==="en";
+ document.documentElement.lang=language;document.documentElement.dir=en?"ltr":"rtl";
+ document.body.dir=en?"ltr":"rtl";
+ document.getElementById("lang-toggle").textContent=en?"العربية":"English";
+ text("brand-name",t.brand);
+ const tag=document.querySelector("header .tag");if(tag)tag.textContent=t.tag;
+ const hero=document.querySelector(".hero");const kicker=hero.querySelector(".kicker");kicker.textContent=t.kicker;
+ hero.querySelector("h1").textContent=t.title;hero.querySelector("p").textContent=t.intro;
+ document.querySelector(".download").textContent=t.download;text("start",t.start);
+ hero.querySelector(".note").textContent=t.note;document.querySelector(".target-frame figcaption").textContent=t.caption;
+ text("instructions-title",t.instructions);
+ const steps=document.querySelectorAll(".step");steps[0].innerHTML="<b>"+t.step1+"</b>"+t.step1b;steps[1].innerHTML="<b>"+t.step2+"</b>"+t.step2b;steps[2].innerHTML="<b>"+t.step3+"</b>"+t.step3b;
+ const section=document.querySelector(".scanner-section");section.querySelector(".kicker").textContent=t.live;section.querySelector("h2").textContent=t.aim;section.querySelector(".scanner-head p").textContent=t.hint;
+ document.querySelector("#hotspot-green").setAttribute("aria-label",t.industry);document.querySelector("#hotspot-blue").setAttribute("aria-label",t.story);
+ text("footer-text",t.footer);text("screen-audio",t.audio);
+ if(!started)text("hint",t.wait);
+}
 const guide={
  industry:{title:"المادة والصناعة",text:"جمعت بعض المراسي التقليدية بين عارضة خشبية صلبة، مثل الساج، وأجزاء حديدية قوية. عُرف الساج بمتانته ومقاومته للتلف البحري، بينما تساعد مخالب المرساة المعدنية على تثبيت السفينة بالقاع الصخري، وقد تحيط به الشعاب المرجانية. أما هذه القطعة، فيؤكد الفحص المنشور أنها حديدية ولا يثبت وجود الساج فيها."},
  story:{title:"القصة والتاريخ",text:"تخيّل سفن الحجاج، كالسنبوك والبواري، بعد أشهر من السفر وسط أمواج البحر الأحمر، تلقي مراسيها عند ميناء باب البنط. عُثر على هذه المرساة قرب ساحل جدة، ويعود تاريخها إلى منتصف أو أواخر القرن الثامن عشر. هذه حكاية سياقية."}
 };
-const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),error=document.querySelector("#camera-error");
+function currentGuide(){return language==="en"?englishGuide:guide;}\nconst scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),error=document.querySelector("#camera-error");
 const panel=document.querySelector("#info-panel"),closeButton=document.querySelector("#close-panel"),listenButton=document.querySelector("#listen-panel");
 let activeTopic=null,started=false,cardTexture=null;
 function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
@@ -67,12 +95,12 @@ function drawCard(topic){
  if(cardTexture)cardTexture.dispose();cardTexture=new THREE.CanvasTexture(canvas);cardTexture.needsUpdate=true;
  const mesh=panel.getObject3D("mesh");if(mesh){mesh.material.map=cardTexture;mesh.material.needsUpdate=true;}
 }
-function openCard(topic){activeTopic=topic;document.querySelector("#screen-title").textContent=guide[topic].title;document.querySelector("#screen-text").textContent=guide[topic].text;document.querySelector("#screen-card").hidden=false;panel.setAttribute("visible",false);closeButton.setAttribute("visible",false);listenButton.setAttribute("visible",false);}
+function openCard(topic){activeTopic=topic;document.querySelector("#screen-title").textContent=currentGuide()[topic].title;document.querySelector("#screen-text").textContent=currentGuide()[topic].text;document.querySelector("#screen-card").hidden=false;panel.setAttribute("visible",false);closeButton.setAttribute("visible",false);listenButton.setAttribute("visible",false);}
 function closeCard(){activeTopic=null;document.querySelector("#screen-card").hidden=true;panel.setAttribute("visible",false);closeButton.setAttribute("visible",false);listenButton.setAttribute("visible",false);if(window.speechSynthesis)window.speechSynthesis.cancel();}
 document.querySelector("#arrow-green").addEventListener("click",()=>openCard("industry"));
 document.querySelector("#arrow-blue").addEventListener("click",()=>openCard("story"));
 closeButton.addEventListener("click",closeCard);
-function speakTopic(){if(!activeTopic)return;if(!("speechSynthesis" in window)){error.textContent="ميزة النطق غير مدعومة في هذا المتصفح.";error.hidden=false;return;}window.speechSynthesis.cancel();const speech=new SpeechSynthesisUtterance(guide[activeTopic].title+". "+guide[activeTopic].text);speech.lang="ar-SA";speech.rate=.96;speech.pitch=1;speech.volume=1;const voices=window.speechSynthesis.getVoices();speech.voice=voices.find(v=>v.lang.toLowerCase()==="ar-sa")||voices.find(v=>v.lang.toLowerCase().startsWith("ar"))||null;window.speechSynthesis.speak(speech);}
+function speakTopic(){if(!activeTopic)return;if(!("speechSynthesis" in window)){error.textContent=i18n[language].error;error.hidden=false;return;}window.speechSynthesis.cancel();const speech=new SpeechSynthesisUtterance(currentGuide()[activeTopic].title+". "+currentGuide()[activeTopic].text);speech.lang=language==="en"?"en-US":"ar-SA";speech.rate=.96;speech.pitch=1;speech.volume=1;const voices=window.speechSynthesis.getVoices();speech.voice=voices.find(v=>v.lang.toLowerCase()===(language==="en"?"en-us":"ar-sa"))||voices.find(v=>v.lang.toLowerCase().startsWith(language==="en"?"en":"ar"))||null;window.speechSynthesis.speak(speech);}
 listenButton.addEventListener("click",speakTopic);
 target.addEventListener("targetFound",()=>{target.object3D.visible=true;hint.hidden=true;closeCard();document.querySelector("#arrow-green").setAttribute("visible",false);document.querySelector("#arrow-blue").setAttribute("visible",false);document.querySelector("#hotspot-green").classList.add("visible");document.querySelector("#hotspot-blue").classList.add("visible");requestAnimationFrame(positionHotspots);});
 target.addEventListener("targetLost",()=>{target.object3D.visible=false;closeCard();document.querySelector("#hotspot-green").classList.remove("visible");document.querySelector("#hotspot-blue").classList.remove("visible");hint.hidden=false;hint.textContent="وجّه الكاميرا نحو صورة المرساة لإظهار الأسهم";});
@@ -80,7 +108,7 @@ function positionHotspots(){if(!target.object3D.visible)return;scene.camera.upda
 document.querySelector("#hotspot-green").addEventListener("click",()=>openCard("industry"));document.querySelector("#hotspot-blue").addEventListener("click",()=>openCard("story"));document.querySelector("#screen-close").addEventListener("click",closeCard);document.querySelector("#screen-audio").addEventListener("click",speakTopic);
 let readyTimer;
 async function startAR(){document.querySelector("#scanner").scrollIntoView({behavior:"smooth",block:"start"});if(started)return;const system=scene.systems["mindar-image-system"];if(!system){hint.textContent="جارٍ تجهيز الكاميرا…";readyTimer=setTimeout(startAR,500);return;}error.hidden=true;hint.textContent="جارٍ تشغيل الكاميرا…";try{await system.start();started=true;hint.textContent="وجّه الكاميرا نحو صورة المرساة";}catch(e){hint.textContent="لم تعمل الكاميرا. اسمح بإذن الكاميرا ثم أعد المحاولة.";error.textContent="تأكد من فتح الموقع عبر HTTPS واستخدام Safari أو Chrome.";error.hidden=false;}}
-document.querySelector("#start").addEventListener("click",startAR);
+document.querySelector("#lang-toggle").addEventListener("click",()=>{language=language==="ar"?"en":"ar";applyLanguage();if(activeTopic)openCard(activeTopic);});\ndocument.querySelector("#lang-toggle").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();document.querySelector("#lang-toggle").click();}});\napplyLanguage();\ndocument.querySelector("#start").addEventListener("click",startAR);
 document.querySelector(".download").addEventListener("click",()=>startAR());
 scene.addEventListener("loaded",()=>{target.object3D.visible=false;
  // Make AR controls tappable on iPhone touchscreens as well as desktop mouse.
