@@ -55,12 +55,16 @@ footer{padding:15px 20px;text-align:center;background:var(--brown);color:#efe3cf
 const guideContent={
  "history":{
   "title":"باب البنط ورحلة الحج",
+  "worldTitle":"HAJJ BY SEA",
+  "worldCopy":"Pilgrims arrived via Bab Al-Bunt",
   "body":"كان ميناء جدة بوابة بحرية مهمة للحجاج القادمين إلى مكة. ويذكر مصدر هيئة تطوير جدة أن رحلة الحج التاريخية تمر بباب البنط، فيما استُخدم المبنى تاريخيًا للجمارك واستقبال القادمين عبر البحر.",
   "ar":"وصل حجاج كثيرون إلى جدة بحرًا، وكان ميناؤها بوابةً إلى مكة. ارتبط باب البنط باستقبال القادمين، وأصبح اليوم مقر متحف البحر الأحمر.",
   "source":"<a href='https://www.spa.gov.sa/en/N2591337' target='_blank' rel='noopener'>وكالة الأنباء السعودية · مسار الحج التاريخي</a><a href='https://whc.unesco.org/en/list/1361/' target='_blank' rel='noopener'>UNESCO · Historic Jeddah</a>"
  },
  "material":{
   "title":"الخشب والمواد البحرية",
+  "worldTitle":"WOOD & CRAFT",
+  "worldCopy":"Teak is durable; anchor wood is unverified",
   "body":"استُخدم خشب الساج في صناعة السفن لصلابته ومتانته الطبيعية في الظروف البحرية. قد تتآكل القطع المعدنية مع الزمن. لا تتوفر هنا وثيقة تثبت نوع خشب هذه المرساة أو تركيب أجزائها المعدنية.",
   "ar":"استُخدم الساج في بعض الصناعات البحرية لصلابته ومتانته. لكن لا نجزم أن المرساة المعروضة مصنوعة منه دون توثيق أثري خاص بها.",
   "source":"<a href='https://www.fao.org/4/x4565e/x4565e03.htm' target='_blank' rel='noopener'>FAO · Teak</a>"
@@ -71,7 +75,8 @@ function showTopic(key){const item=guideContent[key];document.querySelectorAll("
 document.querySelectorAll("[data-topic]").forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
 showTopic("history");
 const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),controls=document.querySelector("#ar-controls"),error=document.querySelector("#camera-error"),audioLabel=document.querySelector("#audio-label");
-function setARText(){document.querySelector("#history-title").setAttribute("value","HAJJ BY SEA");document.querySelector("#history-copy").setAttribute("value","Pilgrims arrived through Bab Al-Bunt");document.querySelector("#material-title").setAttribute("value","WOOD & CRAFT");document.querySelector("#material-copy").setAttribute("value","Teak is durable; anchor wood is unverified");}
+function setARText(){document.querySelector("#history-title").setAttribute("value",guideContent.history.worldTitle);document.querySelector("#history-copy").setAttribute("value",guideContent.history.worldCopy);document.querySelector("#material-title").setAttribute("value",guideContent.material.worldTitle);document.querySelector("#material-copy").setAttribute("value",guideContent.material.worldCopy);}
+setARText();
 target.addEventListener("targetFound",()=>{hint.hidden=true;controls.classList.add("visible");});
 target.addEventListener("targetLost",()=>{hint.hidden=false;controls.classList.remove("visible");});
 let started=false;
