@@ -1,59 +1,67 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#082f38"><title>حكاية مرساة | متحف البحر الأحمر</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102f34">
+<title>حكاية المرساة | متحف البحر الأحمر</title>
 <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
 <style>
-:root{--sea:#082f38;--deep:#061f26;--gold:#e4bd79;--foam:#edf2e8;--muted:#b9ccc7;--line:#ffffff25}*{box-sizing:border-box}body{margin:0;background:var(--sea);color:var(--foam);font:16px/1.7 Arial,sans-serif}header{padding:18px clamp(18px,5vw,60px);border-bottom:1px solid var(--line)}header small,.eyebrow{color:var(--gold);letter-spacing:.12em;font-size:11px}h1{font-size:clamp(25px,5vw,42px);line-height:1.25;margin:8px 0}header p{margin:0;color:var(--muted)}.start{margin-top:14px;padding:11px 18px;background:var(--gold);border:0;border-radius:5px;color:#173538;font-weight:bold;font-size:15px;cursor:pointer}.modes{display:flex;gap:10px;padding:16px clamp(18px,5vw,60px);justify-content:center}.modes button,.hotspots button{padding:10px 15px;border:1px solid #77918c;background:#12444b;color:var(--foam);border-radius:5px;cursor:pointer}.modes button.active{background:var(--gold);color:#173538}.stage{position:relative;height:min(54vh,500px);min-height:300px;background:var(--deep)}.preview{height:min(54vh,500px);min-height:300px;background:radial-gradient(ellipse at 50% 40%,#1c5960,#061f26 72%);position:relative}.preview a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}.hotspots{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px}.hotspots button{background:#e4bd79;color:#173538}a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}#hint{position:absolute;z-index:3;inset:0;display:grid;place-content:center;text-align:center;padding:20px;background:#061f26a8;color:var(--gold);pointer-events:none}.info{padding:22px clamp(18px,5vw,60px) 28px;max-width:900px;margin:auto}.info h2{font-size:22px;margin:0 0 4px}.sub{color:var(--muted);font-size:13px;margin:0 0 16px}.buttons{display:flex;gap:9px;flex-wrap:wrap}.buttons button{padding:10px 15px;border:1px solid #77918c;background:#12444b;color:var(--foam);border-radius:5px;font-size:14px;cursor:pointer}.buttons button[aria-pressed=true],.buttons button:hover{background:var(--gold);border-color:var(--gold);color:#173538}.card{margin-top:14px;padding:17px 18px;background:#ffffff0d;border:1px solid var(--line);border-right:3px solid var(--gold);border-radius:4px;min-height:130px}.card h3{margin:0 0 6px;color:var(--gold);font-size:17px}.card p{margin:0;font-size:14px}.card ul{margin:8px 0 0;padding-right:20px;color:var(--muted);font-size:13px}.source{margin-top:12px;padding-top:9px;border-top:1px solid var(--line);font-size:11px;color:#b5c8c2}.source a{color:#f0cf8f;margin-inline-start:9px}.ask{margin-top:18px;border-top:1px solid var(--line);padding-top:16px}.ask h3{margin:0 0 8px;font-size:16px}.askrow{display:flex;gap:8px}.ask input{flex:1;min-width:0;background:#ffffff0d;border:1px solid var(--line);border-radius:4px;padding:11px;color:white;font-size:14px}.ask button{padding:0 16px;background:var(--gold);border:0;border-radius:4px;font-weight:bold}.answer{min-height:24px;margin:9px 0 0;color:#d5e2dc;font-size:13px}footer{padding:16px 20px;text-align:center;color:#91aaa4;font-size:11px;border-top:1px solid var(--line)}@media(max-width:520px){.stage{height:48vh;min-height:280px}.buttons button{flex:1 1 40%}.card{padding:14px}}
-
-/* Museum-inspired interface */
-:root{--sea:#f1ede3;--deep:#173b40;--gold:#a97c43;--foam:#243e3e;--muted:#66736c;--line:#d8cebd}
-body{background:#f1ede3;color:#243e3e}
-header{background:linear-gradient(110deg,#f8f5ed,#e9e0d1);border-bottom:1px solid #cfc2ac}
-header small,.eyebrow{color:#8a6639;letter-spacing:.14em}
-header p,.sub{color:#61716b}
-.start{background:#173b40;color:#f4ead6}
-.modes{background:#e9e2d5;border-block:1px solid #d8cebd}
-.modes button{background:#f7f4ed;color:#254246;border-color:#c9baa1}
-.modes button.active,.modes button:hover{background:#173b40;border-color:#173b40;color:#f4ead6}
-.stage{background:#092b32}
-.preview{background:radial-gradient(ellipse at 50% 38%,#42716d,#102f35 72%)}
-.info{background:#f8f6f0;border-inline:1px solid #e1d8c9}
-.info h2,.ask h3{color:#173b40}
-.card{background:#fffdf8;border-color:#e0d7c8;border-right-color:#a97c43;color:#243e3e;box-shadow:0 6px 22px #4533180a}
-.card p{color:#344e4d}.card ul{color:#68756d}.source{border-color:#e3dacb;color:#6e766f}.source a{color:#815d2e}
-.buttons button{background:#ede7db;border-color:#c9bda9;color:#294447}.buttons button[aria-pressed=true],.buttons button:hover{background:#173b40;border-color:#173b40;color:#f6eedc}
-.hotspots button{background:#d9c39c;color:#273d3d}
-.ask{border-color:#d8cebd}.ask input{background:#fffdf8;color:#263e3d;border-color:#cfc4b3}.ask button{background:#173b40;color:#f4ead6}.answer{color:#4b625d}
-footer{background:#173b40;color:#e4dccb;border:0}
-.target-card{max-width:1100px;margin:22px auto;padding:20px clamp(18px,5vw,60px);display:grid;grid-template-columns:1fr minmax(240px,390px);gap:28px;align-items:center;background:#e7dfd0;border-block:1px solid #d0c2ac}
-.target-copy h2{font-size:22px;color:#173b40;margin:8px 0}.target-copy p{font-size:14px;color:#4f645f;max-width:520px}.target-copy small{color:#806f55;font-size:11px}
-.target-card figure{margin:0;padding:8px;background:#fbf8f0;border:1px solid #c9baa1;box-shadow:0 8px 22px #33251522}.target-card img{display:block;width:100%;height:auto;max-height:250px;object-fit:cover}
-@media(max-width:650px){.target-card{grid-template-columns:1fr;gap:12px;margin:14px}.target-card figure{max-width:460px}.target-card img{max-height:220px}}
-</style></head>
+:root{--ink:#18383a;--sea:#123a40;--sand:#f1eadc;--paper:#faf8f2;--gold:#b98e51;--muted:#687875;--line:#d8cebb}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,"IBM Plex Sans Arabic",sans-serif}
+header{height:76px;padding:0 clamp(20px,6vw,88px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:#fbfaf6}
+.brand{display:flex;align-items:center;gap:11px}.mark{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sea);color:#f1d39b;font-size:21px}.brand-title{font-size:14px;font-weight:700}.brand small{display:block;font-size:9px;letter-spacing:.14em;color:var(--muted);margin-top:3px}
+.header-tag{font-size:11px;color:#927346;letter-spacing:.14em}
+.hero{padding:50px clamp(20px,8vw,120px);display:grid;grid-template-columns:1fr .95fr;gap:7vw;align-items:center;background:linear-gradient(120deg,#f7f4eb,#e9e3d6);min-height:470px}
+.kicker{color:#927346;font-size:10px;letter-spacing:.19em}.hero h1{font-size:clamp(38px,5vw,66px);line-height:1.25;margin:15px 0;color:var(--sea)}.hero p{max-width:460px;line-height:2;color:#5d706c;font-size:15px}
+.primary{margin-top:16px;background:var(--sea);color:white;padding:14px 22px;border:0;border-radius:4px;font-weight:bold;font-size:14px;cursor:pointer}.primary:hover{background:#20565a}.primary span{color:#e7c17f;margin-inline-start:18px}
+.hero-note{margin-top:13px;font-size:10px;color:#86775f}
+.target-frame{background:#fffdf8;padding:11px;border:1px solid #cfc1a8;box-shadow:0 16px 40px #40331d1c;position:relative}
+.target-frame:before{content:"";position:absolute;inset:5px;border:1px solid #d8cbb4;pointer-events:none}
+.target-frame img{display:block;width:100%;max-height:340px;object-fit:cover}
+.target-caption{display:flex;justify-content:space-between;gap:10px;padding:10px 4px 2px;font-size:10px;color:#786c58}.target-caption span:last-child{letter-spacing:.1em}
+.scanner-section{padding:46px clamp(20px,8vw,120px) 60px}
+.scanner-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.scanner-heading h2{font-size:22px;margin:5px 0;color:var(--sea)}.scanner-heading p{font-size:12px;color:var(--muted);margin:0}
+.scanner{height:min(52vh,480px);min-height:300px;background:#082c33;position:relative;overflow:hidden}
+a-scene{position:absolute!important;inset:0;width:100%!important;height:100%!important}
+#hint{position:absolute;z-index:3;inset:0;display:grid;align-content:center;justify-items:center;gap:8px;background:#061f26b7;color:#f1d39b;text-align:center;padding:20px;pointer-events:none}
+#hint .target-icon{font-size:42px}#hint b{font-size:15px}#hint small{color:#d1d7c9}
+.info-section{padding:46px clamp(20px,8vw,120px) 54px;background:#eee8db}
+.info-section h2{color:var(--sea);font-size:23px;margin:5px 0}.info-section>p{font-size:13px;color:#63716a;margin:0 0 18px}
+.info-buttons{display:flex;gap:9px;flex-wrap:wrap}.info-buttons button{padding:11px 16px;border:1px solid #cbbd9f;background:#faf8f2;color:#244346;border-radius:4px;cursor:pointer}.info-buttons button[aria-pressed=true],.info-buttons button:hover{background:var(--sea);color:white;border-color:var(--sea)}
+.info-card{margin-top:14px;min-height:120px;background:#fbfaf6;border:1px solid #ddd2c0;border-right:4px solid var(--gold);padding:17px 20px;line-height:1.9}.info-card h3{margin:0 0 5px;color:#997340;font-size:17px}.info-card p{margin:0;font-size:13px;color:#405a56}.sources{padding-top:9px;margin-top:10px;border-top:1px solid #e7dfd2;font-size:10px;color:#6f7770}.sources a{color:#826137;margin-inline-start:8px}
+.ask{margin-top:20px;display:flex;gap:8px;max-width:600px}.ask input{flex:1;min-width:0;padding:11px;border:1px solid #d1c6b5;background:#fffdf9;border-radius:4px}.ask button{padding:0 18px;border:0;background:var(--sea);color:white;border-radius:4px;cursor:pointer}.answer{font-size:12px;color:#63716a;min-height:22px}
+footer{padding:17px 24px;background:var(--sea);color:#e5e0d3;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em}
+@media(max-width:760px){header{height:66px;padding:0 18px}.hero{grid-template-columns:1fr;padding:35px 20px;gap:24px}.hero h1{font-size:42px}.target-frame{max-width:560px}.target-frame img{max-height:255px}.scanner-section{padding:35px 18px 42px}.scanner{height:48vh;min-height:280px}.scanner-heading{display:block}.scanner-heading p{margin-top:4px}.info-section{padding:34px 18px 40px}.info-buttons button{flex:1 1 40%}footer{display:block;text-align:center;line-height:2}}
+</style>
+</head>
 <body>
-<header><small>RED SEA MUSEUM · جدة</small><h1>حكاية مرساة من البحر الأحمر</h1><p>وجّهي الكاميرا إلى صورة الهدف لتظهر المرساة والمرشد البحّار.</p><button class="start" id="start">ابدئي التجربة</button></header>
-<section class="target-card"><div class="target-copy"><span class="eyebrow">صورة الهدف · IMAGE TARGET</span><h2>ابدئي من قطعة المتحف</h2><p>اعرضي هذه الصورة على شاشة ثانية أو اطبعيها، ثم وجّهي كاميرا الجوال إليها لبدء التعرّف البصري.</p><small>هذه صورة المرساة المستخدمة كهدف في النموذج الأولي.</small></div><figure><img src="assets/anchor-target.jpg" alt="صورة المرساة الأثرية في قاعة العرض، هدف التجربة"></figure></section><div class="stage" id="ar-mode"><div id="hint">وجّهي الكاميرا نحو صورة الهدف</div>
-<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiScanning:no" embedded vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false"><a-camera look-controls="enabled:false"></a-camera><a-entity id="target" mindar-image-target="targetIndex:0"><a-plane position="0 0 0" width="1.15" height=".72" color="#173b40" opacity=".94"></a-plane><a-circle position="-.32 .12 .02" radius=".13" color="#d6b476"></a-circle><a-text value="ANCHOR 01" position="-.1 .13 .03" color="#f4ead6" width="1.3"></a-text><a-text value="RED SEA MUSEUM" position="-.1 -.04 .03" color="#d6b476" width="1.1"></a-text><a-text value="Explore the object story" position="-.1 -.20 .03" color="#f4ead6" width="1.0"></a-text></a-entity></a-scene></div><section class="info"><p class="eyebrow">دليل تفاعلي · معلومات عامة موثقة</p><h2>اختاري موضوعًا</h2><p class="sub">اضغطي زرًا لتظهر بطاقة المرشد. المعلومات عامة عن الخشب البحري، وليست فحصًا لهذه المرساة بعينها.</p>
-<div class="buttons" role="group" aria-label="موضوعات المرساة"><button data-topic="wood" aria-pressed="true">خشب الساج</button><button data-topic="salt" aria-pressed="false">ماء البحر والملوحة</button><button data-topic="anchor" aria-pressed="false">كيف تعمل المرساة؟</button></div>
-<article class="card" id="card" aria-live="polite"></article>
-<div class="ask"><h3>اسألي المرشد</h3><div class="askrow"><input id="question" maxlength="200" placeholder="مثال: هل الساج لا يتأثر بالماء؟"><button id="ask">اسألي</button></div><p class="answer" id="answer" aria-live="polite">إجابات هذا النموذج جاهزة ومبنية على البطاقات أعلاه.</p></div>
-</section><footer>النموذج يشرح الفكرة؛ نوع خشب المرساة المعروضة يحتاج مصدرًا خاصًا بالقطعة.</footer>
+<header><div class="brand"><span class="mark">⚓</span><div class="brand-title">متحف البحر الأحمر<small>RED SEA MUSEUM · جدة</small></div></div><span class="header-tag">حكاية من الساحل</span></header>
+<main>
+<section class="hero">
+<div><span class="kicker">تجربة تفاعلية · واقع معزز</span><h1>حكاية المرساة</h1><p>وجّهي كاميرا جوالك إلى صورة المرساة، وشاهدي بطاقة تعريفية تظهر فوقها. بعدها افتحي موضوعًا من الأزرار لمعرفة المزيد عن المرساة والخشب البحري.</p><button id="start" class="primary">📷 بدء الواقع المعزز <span>↗</span></button><div class="hero-note">اسمحي للمتصفح باستخدام الكاميرا عند الطلب.</div></div>
+<figure class="target-frame"><img src="assets/anchor-target.jpg" alt="صورة المرساة الأثرية المستخدمة كهدف للتعرف البصري"><figcaption class="target-caption"><span>صورة الهدف · اعرضيها على شاشة ثانية أو اطبعيها</span><span>OBJECT 01</span></figcaption></figure>
+</section>
+<section class="scanner-section"><div class="scanner-heading"><div><span class="kicker">IMAGE TRACKING · MINDAR</span><h2>وجّهي الكاميرا نحو صورة الهدف</h2></div><p>تأكدي من وضوح الصورة والإضاءة حولها.</p></div><div class="scanner"><div id="hint"><span class="target-icon">⌖</span><b>الكاميرا بانتظار صورة المرساة</b><small>اضغطي «بدء الواقع المعزز» ثم وجّهيها للصورة أعلاه</small></div>
+<a-scene id="scene" mindar-image="imageTargetSrc: assets/targets.mind; autoStart:false; uiLoading:no; uiScanning:no" embedded color-space="sRGB" renderer="colorManagement:true" vr-mode-ui="enabled:false" device-orientation-permission-ui="enabled:false"><a-camera position="0 0 0" look-controls="enabled:false"></a-camera><a-entity id="target" mindar-image-target="targetIndex:0"><a-plane position="0 0 0" width="1.15" height=".68" color="#173b40" opacity=".96"></a-plane><a-circle position="-.36 .12 .02" radius=".12" color="#d6b476"></a-circle><a-text value="ANCHOR 01" position="-.18 .12 .03" color="#f4ead6" width="1.2"></a-text><a-text value="RED SEA MUSEUM" position="-.18 -.03 .03" color="#d6b476" width="1.1"></a-text><a-text value="Open an information card below" position="-.18 -.18 .03" color="#f4ead6" width="1.15"></a-text></a-entity></a-scene></div></section>
+<section class="info-section"><span class="kicker">دليل القطعة</span><h2>اختاري موضوعًا</h2><p>معلومات عامة موثقة عن الخشب البحري، وليست فحصًا لهذه المرساة بعينها.</p>
+<div class="info-buttons"><button data-topic="wood" aria-pressed="true">خشب الساج</button><button data-topic="salt" aria-pressed="false">ماء البحر والملوحة</button><button data-topic="anchor" aria-pressed="false">كيف تعمل المرساة؟</button></div><article id="card" class="info-card" aria-live="polite"></article>
+<div class="ask"><input id="question" placeholder="اكتبي سؤالًا عن المرساة" maxlength="200"><button id="ask">اسألي المرشد</button></div><p id="answer" class="answer" aria-live="polite">إجابات هذا النموذج جاهزة ومبنية على البطاقات أعلاه.</p></section></main>
+<footer><span>نموذج أولي طلابي · المعلومات العامة موثقة</span><span>AR × COMPUTER VISION</span></footer>
 <script>
 const topics={
 wood:{title:"خشب الساج",text:"الساج خشب متين معروف بمقاومته الطبيعية للعوامل الجوية وامتصاص الماء، لذلك استُخدم في أجزاء من القوارب والسفن. تختلف خصائصه حسب مصدر الخشب وجودته؛ ولا نعرف حتى الآن إن كانت هذه المرساة مصنوعة منه.",source:'<a href="https://www.fao.org/4/x4565e/x4565e03.htm" target="_blank" rel="noopener">FAO · Teak</a><a href="https://www.iufro.org/media/fileadmin/publications/world-series/ws36.pdf" target="_blank" rel="noopener">IUFRO · Teak wood quality</a>'},
 salt:{title:"ماء البحر والملوحة",text:"الخشب البحري ليس محصّنًا من التلف. التعرض الطويل للماء قد يسبب تدهورًا، كما قد تهاجم الكائنات البحرية الخشب غير المحمي. لذلك لا ننسب مقاومة مطلقة للملوحة إلى الساج، ولا نؤكد مادة المرساة دون توثيقها.",source:'<a href="https://research.fs.usda.gov/treesearch/34298" target="_blank" rel="noopener">US Forest Service · Durability in marine environments</a><a href="https://research.fs.usda.gov/treesearch/53860" target="_blank" rel="noopener">US Forest Service · Salt damage</a>'},
-anchor:{title:"كيف تعمل المرساة؟",text:"تساعد المرساة السفينة على الثبات عندما يمسك طرفها بالقاع، بينما يخفف الحبل أو السلسلة أثر السحب والحركة. هذا شرح عام؛ يختلف شكل المرساة وطريقة تثبيتها باختلاف نوعها والفترة التاريخية.",source:'<span>شرح عام للنموذج الأولي؛ أضيفي مصدرًا أثريًا عند تحديد قطعة المتحف.</span>'}
+anchor:{title:"كيف تعمل المرساة؟",text:"تساعد المرساة السفينة على الثبات عندما يمسك طرفها بالقاع، بينما يخفف الحبل أو السلسلة أثر السحب والحركة. هذا شرح عام؛ يختلف شكل المرساة وطريقة تثبيتها باختلاف نوعها والفترة التاريخية.",source:"شرح عام للنموذج الأولي؛ أضيفي مصدرًا أثريًا عند تحديد قطعة المتحف."}
 };
-const card=document.querySelector("#card"),buttons=[...document.querySelectorAll("[data-topic]")];
-function showTopic(key){const t=topics[key];buttons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.topic===key));card.innerHTML='<h3>'+t.title+'</h3><p>'+t.text+'</p><div class="source">المصادر: '+t.source+'</div>';document.querySelector("#answer").textContent="تم فتح بطاقة "+t.title+"؛ تقدرين تسأليني عنها."; }
-buttons.forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
-document.querySelector("#ask").addEventListener("click",()=>{const q=document.querySelector("#question").value.trim();if(!q)return;let key=/ساج|خشب|مادة|wood|teak/i.test(q)?"wood":/ملح|ماء|salt|water/i.test(q)?"salt":"anchor";showTopic(key);document.querySelector("#answer").textContent=topics[key].text;});
+const card=document.querySelector("#card"),topicButtons=[...document.querySelectorAll("[data-topic]")];
+function showTopic(key){const t=topics[key];topicButtons.forEach(b=>b.setAttribute("aria-pressed",b.dataset.topic===key));card.innerHTML="<h3>"+t.title+"</h3><p>"+t.text+"</p><div class='sources'>المصادر: "+t.source+"</div>";document.querySelector("#answer").textContent="تم فتح بطاقة "+t.title;}
+topicButtons.forEach(b=>b.addEventListener("click",()=>showTopic(b.dataset.topic)));
+document.querySelector("#ask").addEventListener("click",()=>{const q=document.querySelector("#question").value.trim();if(!q)return;const key=/ساج|خشب|مادة|wood|teak/i.test(q)?"wood":/ملح|ماء|salt|water/i.test(q)?"salt":"anchor";showTopic(key);document.querySelector("#answer").textContent=topics[key].text;});
 showTopic("wood");
-const scene=document.querySelector("#scene"),target=document.querySelector("#target");
-target.addEventListener("targetFound",()=>document.querySelector("#hint").hidden=true);
-target.addEventListener("targetLost",()=>document.querySelector("#hint").hidden=false);
-document.querySelector("#start").addEventListener("click",()=>{const system=scene.systems["mindar-image-system"];if(!system){document.querySelector("#hint").textContent="جارٍ تجهيز الكاميرا…";setTimeout(()=>document.querySelector("#start").click(),700);return;}system.start().catch(()=>{document.querySelector("#hint").textContent="تعذّر تشغيل الكاميرا. استخدمي رابط HTTPS واسمحي بالوصول للكاميرا.";});});
+const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint");
+target.addEventListener("targetFound",()=>hint.hidden=true);
+target.addEventListener("targetLost",()=>hint.hidden=false);
+document.querySelector("#start").addEventListener("click",()=>{const system=scene.systems["mindar-image-system"];if(!system){hint.querySelector("small").textContent="جارٍ تجهيز الكاميرا…";setTimeout(()=>document.querySelector("#start").click(),700);return;}system.start().catch(()=>{hint.querySelector("b").textContent="تعذّر تشغيل الكاميرا";hint.querySelector("small").textContent="تأكدي أن الموقع يعمل عبر HTTPS واسمحي باستخدام الكاميرا.";hint.hidden=false;});});
 </script></body></html>
