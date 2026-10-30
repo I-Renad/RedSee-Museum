@@ -54,8 +54,8 @@ const i18n={
 };
 let language="ar";
 const englishGuide={
- industry:{title:"Material & Craft",text:"Traditional anchors combined strong wooden stocks, such as teak, with durable iron parts. Teak is known for its strength and resistance to marine wear. The metal flukes helped hold a vessel on a rocky seabed, sometimes surrounded by coral. Published analysis identifies this particular object as iron and does not confirm teak in its construction."},
- story:{title:"Story & History",text:"Imagine Hajj vessels such as the sanbuk and bawari, after months of travel through the Red Sea, lowering their anchors at the historic port of Bab Al-Bunt. This anchor was found near Jeddah and dates to the mid-to-late 18th century. The pilgrimage scene is historical context; no known source confirms this specific anchor served those ships."}
+ industry:{title:"Material & Craft",text:"Traditional anchors combined strong wooden stocks, such as teak, with durable iron parts. Teak is known for its strength and resistance to marine wear. The metal flukes helped hold a vessel on a rocky seabed, sometimes surrounded by coral."},
+ story:{title:"Story & History",text:"Imagine Hajj vessels such as the sanbuk and bawari, after months of travel through the Red Sea, lowering their anchors at the historic port of Bab Al-Bunt. This anchor was found near Jeddah and dates to the mid-to-late 18th century. The pilgrimage scene is historical context."}
 };
 function text(id,value){const el=document.getElementById(id);if(el)el.textContent=value;}
 function applyLanguage(){
@@ -77,8 +77,8 @@ function applyLanguage(){
  if(!started)text("hint",t.wait);
 }
 const guide={
- industry:{title:"المادة والصناعة",text:"جمعت بعض المراسي التقليدية بين عارضة خشبية صلبة، مثل الساج، وأجزاء حديدية قوية. عُرف الساج بمتانته ومقاومته للتلف البحري، بينما تساعد مخالب المرساة المعدنية على تثبيت السفينة بالقاع الصخري، وقد تحيط به الشعاب المرجانية. أما هذه القطعة، فيؤكد الفحص المنشور أنها حديدية ولا يثبت وجود الساج فيها."},
- story:{title:"القصة والتاريخ",text:"تخيّل سفن الحجاج، كالسنبوك والبواري، بعد أشهر من السفر وسط أمواج البحر الأحمر، تلقي مراسيها عند ميناء باب البنط. عُثر على هذه المرساة قرب ساحل جدة، ويعود تاريخها إلى منتصف أو أواخر القرن الثامن عشر. هذه حكاية سياقية."}
+ industry:{title:"المادة والصناعة",text:"جمعت بعض المراسي التقليدية بين عارضة خشبية صلبة، مثل الساج، وأجزاء حديدية قوية. عُرف الساج بمتانته ومقاومته للتلف البحري، بينما تساعد مخالب المرساة المعدنية على تثبيت السفينة بالقاع الصخري، وقد تحيط به الشعاب المرجانية."},
+ story:{title:"القصة والتاريخ",text:"تخيّل سفن الحجاج، كالسنبوك والبواري، بعد أشهر من السفر وسط أمواج البحر الأحمر، تلقي مراسيها عند ميناء باب البنط. عُثر على هذه المرساة قرب ساحل جدة، ويعود تاريخها إلى منتصف أو أواخر القرن الثامن عشر.."}
 };
 function currentGuide(){return language==="en"?englishGuide:guide;}
 const scene=document.querySelector("#scene"),target=document.querySelector("#target"),hint=document.querySelector("#hint"),error=document.querySelector("#camera-error");
